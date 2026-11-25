@@ -1,0 +1,3316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Happy Birthday Rasmalai ❤️</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js (r128) for True 3D Starfield & Floating 3D Polaroids at the Finale -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Tone.js for subtle synthesized chimes -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+  <style>
+    :root {
+      --bg-obsidian: #0d0206;
+      --rose-border: rgba(255, 110, 130, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    input[type="text"] {
+      user-select: text;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-obsidian);
+      color: #fff5f7;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow: hidden;
+    }
+
+    .font-serif-display {
+      font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Deep Crimson & Velvet Gradient Backdrop (Screens 1-7) */
+    .ambient-backdrop {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(168, 24, 48, 0.45) 0%, rgba(92, 12, 26, 0.25) 42%, rgba(13, 2, 6, 0.98) 80%),
+        linear-gradient(160deg, #0d0206 0%, #1c040d 55%, #0d0206 100%);
+      z-index: 0;
+      pointer-events: none;
+      transition: opacity 0.85s ease;
+    }
+
+    /* Floating Rose Bokeh & Gold Dust Particles */
+    #particles-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.8s ease;
+    }
+
+    .particle {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatUp linear infinite;
+      transition: opacity 0.8s ease;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(105vh) translateX(0px) scale(0.6);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.85;
+      }
+      50% {
+        transform: translateY(48vh) translateX(14px) scale(1);
+      }
+      80% {
+        opacity: 0.75;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(-8px) scale(1.15);
+        opacity: 0;
+      }
+    }
+
+    /* Dark Crimson Glassmorphism Card */
+    .crimson-glass {
+      background: linear-gradient(165deg, rgba(32, 10, 17, 0.88) 0%, rgba(15, 4, 8, 0.95) 100%);
+      border: 1px solid var(--rose-border);
+      box-shadow:
+        0 26px 65px rgba(0, 0, 0, 0.92),
+        0 0 42px rgba(195, 26, 54, 0.22),
+        inset 0 1px 0 rgba(255, 180, 195, 0.16);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Romantic White-to-Soft-Rose Gradient Heading Text */
+    .gradient-serif-text {
+      background: linear-gradient(180deg, #ffffff 15%, #ffe4e8 58%, #fda4af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 22px rgba(244, 63, 94, 0.42));
+    }
+
+    /* Multi-Ring Glowing Pill Button */
+    .btn-glow-pill {
+      position: relative;
+      background: linear-gradient(180deg, rgba(48, 12, 22, 0.95) 0%, rgba(22, 5, 10, 0.98) 100%);
+      border: 1px solid rgba(255, 110, 130, 0.55);
+      color: #ffe4e6;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      padding: 0.85rem 2.2rem;
+      cursor: pointer;
+      transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow:
+        0 0 0 3px rgba(244, 63, 94, 0.14),
+        0 0 0 7px rgba(244, 63, 94, 0.05),
+        0 0 24px rgba(225, 29, 72, 0.45),
+        inset 0 1px 1px rgba(255, 228, 230, 0.25),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.7);
+      animation: pulseGlow 2.8s ease-in-out infinite;
+    }
+
+    .btn-glow-pill:hover {
+      transform: translateY(-2px) scale(1.03);
+      border-color: rgba(253, 164, 175, 0.9);
+      box-shadow:
+        0 0 0 4px rgba(244, 63, 94, 0.24),
+        0 0 0 9px rgba(244, 63, 94, 0.08),
+        0 0 38px rgba(244, 63, 94, 0.72),
+        inset 0 1px 2px rgba(255, 255, 255, 0.38);
+    }
+
+    .btn-glow-pill:active {
+      transform: scale(0.97);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow:
+          0 0 0 3px rgba(244, 63, 94, 0.12),
+          0 0 0 7px rgba(244, 63, 94, 0.05),
+          0 0 22px rgba(225, 29, 72, 0.38),
+          inset 0 1px 1px rgba(255, 228, 230, 0.22);
+      }
+      50% {
+        box-shadow:
+          0 0 0 4px rgba(244, 63, 94, 0.22),
+          0 0 0 9px rgba(244, 63, 94, 0.08),
+          0 0 36px rgba(244, 63, 94, 0.62),
+          inset 0 1px 1px rgba(255, 228, 230, 0.34);
+      }
+    }
+
+    /* Pulsing Crimson Ring on Lock Avatar */
+    @keyframes ringPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.55), 0 0 24px rgba(244, 63, 94, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(244, 63, 94, 0), 0 0 34px rgba(244, 63, 94, 0.75);
+      }
+    }
+    .avatar-pulse-ring {
+      animation: ringPulse 2.4s infinite;
+    }
+
+    /* Keypad Buttons */
+    .keypad-btn {
+      position: relative;
+      z-index: 25;
+      pointer-events: auto;
+      touch-action: manipulation;
+      background: rgba(34, 10, 17, 0.78);
+      border: 1px solid rgba(255, 110, 130, 0.22);
+      border-radius: 14px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: #ffe4e6;
+      transition: all 0.16s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 12px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+    }
+
+    .keypad-btn:hover {
+      background: rgba(136, 19, 55, 0.36);
+      border-color: rgba(253, 164, 175, 0.55);
+      box-shadow: 0 0 18px rgba(244, 63, 94, 0.35);
+    }
+
+    .keypad-btn:active,
+    .keypad-btn.key-pressed {
+      transform: scale(0.93);
+      background: rgba(225, 29, 72, 0.5);
+      border-color: rgba(253, 164, 175, 0.9);
+      box-shadow: 0 0 22px rgba(244, 63, 94, 0.6);
+    }
+
+    /* Pin Dots */
+    .pin-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.18);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .pin-dot.active {
+      background: #fff1f2;
+      transform: scale(1.3);
+      box-shadow: 0 0 10px #fda4af, 0 0 20px #f43f5e;
+    }
+
+    .pin-dot.error {
+      background: #ef4444;
+      box-shadow: 0 0 14px #ef4444;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    .animate-shake {
+      animation: shake 0.4s ease-in-out;
+    }
+
+    /* Screen Transitions */
+    .screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(14px) scale(0.98);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 10;
+    }
+
+    .screen.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+      z-index: 20;
+    }
+
+    /* Cute Panda Floating Animation */
+    @keyframes bobGentle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(1.5deg); }
+    }
+    .panda-bob {
+      animation: bobGentle 2.6s ease-in-out infinite;
+    }
+
+    /* Flickering Birthday Candle Flames */
+    @keyframes candleFlicker {
+      0%, 100% { transform: scale(1) rotate(-2deg); opacity: 0.95; }
+      25% { transform: scale(1.12, 0.92) rotate(2deg); opacity: 1; }
+      50% { transform: scale(0.94, 1.08) rotate(-1deg); opacity: 0.88; }
+      75% { transform: scale(1.06, 0.96) rotate(3deg); opacity: 1; }
+    }
+    .candle-flame {
+      transform-origin: center bottom;
+      animation: candleFlicker 0.85s ease-in-out infinite;
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+
+    /* Cake Cutting Ceremony Stage */
+    .cake-ceremony-stage {
+      position: relative;
+      width: 100%;
+      max-width: 410px;
+      height: 335px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    #cakeCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.85));
+    }
+
+    /* =========================================================
+       SCREEN 6: 3D PERSPECTIVE COVERFLOW GALLERY
+    ========================================================== */
+    .coverflow-stage {
+      perspective: 1100px;
+      transform-style: preserve-3d;
+      position: relative;
+      width: 100%;
+      height: 335px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      touch-action: pan-y;
+    }
+    .coverflow-stage:active {
+      cursor: grabbing;
+    }
+
+    .memory-3d-card {
+      position: absolute;
+      width: 220px;
+      height: 295px;
+      border-radius: 22px;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: none;
+      border: 1.5px solid rgba(255, 110, 130, 0.3);
+      background: #140509;
+      will-change: transform, opacity;
+      -webkit-box-reflect: below 6px linear-gradient(transparent 78%, rgba(255, 110, 130, 0.14));
+    }
+
+    @media (min-width: 640px) {
+      .coverflow-stage {
+        height: 375px;
+      }
+      .memory-3d-card {
+        width: 248px;
+        height: 332px;
+      }
+    }
+
+    /* =========================================================
+       SCREEN 7: 3D INTERACTIVE ENVELOPE & FLAP ANIMATION
+    ========================================================== */
+    .envelope-3d-wrapper {
+      perspective: 1000px;
+      width: 100%;
+      max-width: 345px;
+    }
+
+    .envelope-3d-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      border-radius: 26px;
+      transform-style: preserve-3d;
+      transition: transform 0.22s ease-out, box-shadow 0.35s ease, border-color 0.35s ease;
+      cursor: pointer;
+    }
+
+    .envelope-top-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 58%;
+      transform-origin: top center;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .envelope-3d-card.opening .envelope-top-flap {
+      transform: rotateX(175deg);
+    }
+
+    /* Heartbeat Seal */
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.18); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.14); }
+      60% { transform: scale(1); }
+    }
+    .heart-pulse {
+      animation: heartBeat 1.8s infinite;
+    }
+
+    /* Custom Scrollbar */
+    .custom-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(244, 63, 94, 0.45);
+      border-radius: 9999px;
+    }
+
+    /* Fullscreen Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 60;
+    }
+
+    /* =========================================================
+       SCREEN 8: FINALE — THREE.JS 3D COSMIC STARFIELD POLAROID UNIVERSE
+    ========================================================== */
+    #screen-8 {
+      background-color: #020206;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #threeCosmicContainer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    #threeCosmicContainer:active {
+      cursor: grabbing;
+    }
+
+    /* Minimal Glassmorphic Zoom In / Out Pill (Bottom-Right Only) */
+    .cosmic-zoom-pill {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      background: rgba(16, 18, 24, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      padding: 4px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+    }
+
+    .cosmic-zoom-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 9999px;
+      color: #f1f5f9;
+      font-size: 1.2rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
+    }
+
+    .cosmic-zoom-btn:hover {
+      background: rgba(44, 197, 214, 0.2);
+      color: #2cc5d6;
+    }
+
+    .cosmic-zoom-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* Polaroid Lightbox Modal (#1c1e24, Cyan #2cc5d6 Download + Outlined Heart) */
+    .lightbox-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 70;
+      background: rgba(2, 2, 6, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+
+    .lightbox-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-polaroid {
+      width: 100%;
+      max-width: 350px;
+      background: #1c1e24;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 12px 12px 16px 12px;
+      box-shadow: 0 28px 75px rgba(0, 0, 0, 0.96);
+      transform: scale(0.92) translateY(10px);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .lightbox-backdrop.open .lightbox-polaroid {
+      transform: scale(1) translateY(0);
+    }
+
+    .btn-cyan-download {
+      background: #2cc5d6;
+      color: #05161a;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border-radius: 10px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-cyan-download:hover {
+      background: #48d5e5;
+      box-shadow: 0 0 22px rgba(44, 197, 214, 0.45);
+    }
+
+    .btn-cyan-download:active {
+      transform: scale(0.97);
+    }
+
+    .btn-cyan-heart {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1.5px solid #2cc5d6;
+      color: #2cc5d6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-cyan-heart:hover {
+      background: rgba(44, 197, 214, 0.14);
+    }
+
+    .btn-cyan-heart.liked {
+      background: rgba(44, 197, 214, 0.22);
+      color: #67e8f9;
+      box-shadow: 0 0 16px rgba(44, 197, 214, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Crimson & Velvet Backdrop + Floating Rose Bokeh Particles -->
+  <div id="ambientBackdrop" class="ambient-backdrop"></div>
+  <div id="particles-container"></div>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Persistent Top-Right Sound Toggle -->
+  <div class="fixed top-4 right-4 z-50 flex items-center gap-2">
+    <button id="toggleSoundBtn" title="Toggle Gentle Chimes" class="px-3 py-1.5 rounded-full text-xs font-medium bg-black/55 border border-white/15 text-rose-100 hover:bg-rose-950/75 transition flex items-center gap-1.5 backdrop-blur-md cursor-pointer">
+      <span id="soundIcon">🔇</span>
+    </button>
+  </div>
+
+  <!-- =========================================================
+       SCREEN 1: PASSCODE LOCK SCREEN (2611 = 26 November)
+  ========================================================== -->
+  <section id="screen-1" class="screen active" tabindex="0">
+    <div class="crimson-glass w-full max-w-[338px] rounded-[28px] px-6 py-6 flex flex-col items-center relative z-20 pointer-events-auto">
+      
+      <!-- Circular Glowing Avatar Portrait (#1: Malkin g 😶) -->
+      <button id="avatarHintTrigger" class="group relative w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr from-rose-600 via-pink-300 to-rose-500 avatar-pulse-ring hover:scale-105 transition-transform cursor-pointer mb-2.5">
+        <img id="lockAvatarImg" src="Malkin g.jpeg" alt="1. Malkin g" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/200x200/3b0d18/fecdd3?text=Malkin+g';">
+      </button>
+
+      <!-- Professional "Hint :" Pill Directly Beneath Avatar -->
+      <button id="moonHintTextTrigger" type="button" class="mb-3.5 px-3.5 py-1 rounded-full bg-rose-950/65 border border-rose-400/30 text-[11px] text-rose-200/90 hover:text-white hover:border-rose-300/65 transition cursor-pointer shadow-[0_0_14px_rgba(244,63,94,0.24)] flex items-center gap-1.5">
+        <span class="font-semibold text-rose-300 tracking-wide">Hint :</span>
+        <span>Tap the pic of moon to get passkey</span>
+      </button>
+
+      <!-- Heading -->
+      <h1 class="font-serif-display text-2xl sm:text-[26px] tracking-[0.22em] font-semibold gradient-serif-text mb-1">
+        LOCKED
+      </h1>
+
+      <p class="text-[11px] text-rose-200/60 text-center mb-3.5">
+        Enter 4-digit birthday passkey
+      </p>
+
+      <!-- PIN Display Pill -->
+      <div id="pinDisplayBox" class="relative w-full py-3 px-4 rounded-2xl bg-black/50 border border-rose-500/25 flex items-center justify-center gap-4 mb-3 shadow-inner">
+        <span class="pin-dot" data-index="0"></span>
+        <span class="pin-dot" data-index="1"></span>
+        <span class="pin-dot" data-index="2"></span>
+        <span class="pin-dot" data-index="3"></span>
+        <span class="absolute right-3.5 text-rose-300/65 text-xs animate-pulse" title="26 November">✨</span>
+      </div>
+
+      <!-- Error Feedback -->
+      <div id="pinErrorMsg" class="h-4 text-[11px] text-rose-400 font-medium tracking-wide mb-2 opacity-0 transition-opacity">
+        Wrong passkey! Tap the pic of moon for hint ✨
+      </div>
+
+      <!-- Numeric Keypad (1-9, Clear, 0, ⌫) -->
+      <div id="lockKeypadGrid" class="grid grid-cols-3 gap-2 w-full mb-3.5 relative z-30 pointer-events-auto">
+        <button type="button" class="keypad-btn" data-key="1">1</button>
+        <button type="button" class="keypad-btn" data-key="2">2</button>
+        <button type="button" class="keypad-btn" data-key="3">3</button>
+        <button type="button" class="keypad-btn" data-key="4">4</button>
+        <button type="button" class="keypad-btn" data-key="5">5</button>
+        <button type="button" class="keypad-btn" data-key="6">6</button>
+        <button type="button" class="keypad-btn" data-key="7">7</button>
+        <button type="button" class="keypad-btn" data-key="8">8</button>
+        <button type="button" class="keypad-btn" data-key="9">9</button>
+        <button type="button" id="keypadClear" class="keypad-btn !text-xs tracking-wider uppercase text-rose-300/80" aria-label="Clear">Clear</button>
+        <button type="button" class="keypad-btn" data-key="0">0</button>
+        <button type="button" id="keypadBackspace" class="keypad-btn text-rose-300" aria-label="Backspace">⌫</button>
+      </div>
+
+      <!-- Unlock Button -->
+      <button type="button" id="keypadUnlockBtn" class="btn-glow-pill w-full !py-2.5 !text-xs relative z-30 pointer-events-auto" style="touch-action: manipulation;">
+        Unlock
+      </button>
+    </div>
+  </section>
+
+  <!-- PASSKEY HINT MODAL -->
+  <div id="hintModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-5 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="relative w-full max-w-[330px] flex flex-col items-center transform scale-95 transition-transform duration-300" id="hintModalContent">
+      <div class="relative w-full aspect-square rounded-[26px] overflow-hidden border border-rose-400/45 shadow-[0_0_55px_rgba(244,63,94,0.4)] bg-rose-950/30">
+        <img id="modalPreviewImg" src="Malkin g.jpeg" alt="1. Malkin g" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x600/3b0d18/fecdd3?text=Malkin+g';">
+        <button id="closeHintModal" class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-black/65 border border-white/25 text-white flex items-center justify-center hover:bg-rose-600 transition cursor-pointer text-base leading-none">
+          ×
+        </button>
+      </div>
+
+      <div class="mt-4 w-full py-3.5 px-5 rounded-2xl bg-[#16050a]/95 border border-rose-500/40 shadow-[0_0_28px_rgba(244,63,94,0.35)] text-center">
+        <span class="font-mono-code text-xs sm:text-sm tracking-[0.26em] text-rose-200 font-semibold">
+          P A S S K E Y &nbsp;=&nbsp; <span class="text-white">2 6 1 1</span>
+        </span>
+        <p class="text-[10px] text-rose-300/65 mt-1 tracking-wider">26 November • Rasmalai's Special Day</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SCREEN 2: "HMM" KAWAII PANDA LOADING SCREEN
+  ========================================================== -->
+  <section id="screen-2" class="screen">
+    <div class="flex flex-col items-center text-center max-w-xs w-full">
+      <div class="relative w-36 h-36 mb-4 panda-bob flex items-center justify-center">
+        <div class="absolute inset-2 rounded-full bg-rose-500/25 blur-xl"></div>
+        <svg viewBox="0 0 200 200" class="w-32 h-32 relative z-10 drop-shadow-[0_0_20px_rgba(255,182,193,0.45)]">
+          <circle cx="58" cy="64" r="17" fill="#1f1116"/>
+          <circle cx="142" cy="64" r="17" fill="#1f1116"/>
+          <ellipse cx="100" cy="102" rx="50" ry="42" fill="#ffffff"/>
+          <ellipse cx="79" cy="98" rx="12" ry="15" transform="rotate(-14 79 98)" fill="#1f1116"/>
+          <ellipse cx="121" cy="98" rx="12" ry="15" transform="rotate(14 121 98)" fill="#1f1116"/>
+          <circle cx="81" cy="96" r="4.2" fill="#ffffff"/>
+          <circle cx="119" cy="96" r="4.2" fill="#ffffff"/>
+          <ellipse cx="66" cy="112" rx="8" ry="4.5" fill="#fda4af" opacity="0.85"/>
+          <ellipse cx="134" cy="112" rx="8" ry="4.5" fill="#fda4af" opacity="0.85"/>
+          <ellipse cx="100" cy="110" rx="4.5" ry="3.2" fill="#1f1116"/>
+          <path d="M93 118 Q100 124 107 118" stroke="#1f1116" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <path d="M100 168 C100 168 72 150 72 133 C72 123 80 117 89 117 C95 117 98 121 100 124 C102 121 105 117 111 117 C120 117 128 123 128 133 C128 150 100 168 100 168 Z" fill="#f43f5e" stroke="#ffe4e6" stroke-width="1.5"/>
+          <ellipse cx="76" cy="142" rx="10" ry="8" fill="#1f1116"/>
+          <ellipse cx="124" cy="142" rx="10" ry="8" fill="#1f1116"/>
+        </svg>
+      </div>
+
+      <h2 id="loadingStatusText" class="font-serif-display italic text-xl sm:text-2xl gradient-serif-text mb-4">
+        Hmm...
+      </h2>
+
+      <div class="w-60 h-1.5 rounded-full bg-rose-950/85 border border-rose-500/25 overflow-hidden mb-3 shadow-inner">
+        <div id="loadingBarFill" class="h-full w-0 bg-gradient-to-r from-rose-600 via-pink-400 to-rose-300 rounded-full shadow-[0_0_12px_#fb7185] transition-all duration-100"></div>
+      </div>
+
+      <p class="text-[10px] tracking-[0.28em] text-rose-300/70 uppercase">
+        • PREPARING SURPRISE •
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SCREEN 3: "IT'S YOUR SPECIAL DAY 🌸"
+  ========================================================== -->
+  <section id="screen-3" class="screen">
+    <div class="flex flex-col items-center text-center max-w-md w-full px-4">
+      <h1 class="font-serif-display text-3xl sm:text-5xl font-semibold gradient-serif-text mb-6 leading-tight">
+        It's Your Special Day <span class="inline-block drop-shadow-[0_0_14px_rgba(244,114,182,0.85)] animate-pulse">🌸</span>
+      </h1>
+
+      <div class="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full crimson-glass flex items-center justify-center mb-6 shadow-[0_0_55px_rgba(244,63,94,0.36)]">
+        <div class="absolute inset-0 rounded-full border border-rose-400/30 animate-ping opacity-20"></div>
+        <svg viewBox="0 0 200 200" class="w-28 h-28 panda-bob">
+          <circle cx="58" cy="64" r="17" fill="#1f1116"/>
+          <circle cx="142" cy="64" r="17" fill="#1f1116"/>
+          <ellipse cx="100" cy="102" rx="50" ry="42" fill="#ffffff"/>
+          <ellipse cx="79" cy="98" rx="12" ry="15" transform="rotate(-14 79 98)" fill="#1f1116"/>
+          <ellipse cx="121" cy="98" rx="12" ry="15" transform="rotate(14 121 98)" fill="#1f1116"/>
+          <circle cx="81" cy="96" r="4.2" fill="#ffffff"/>
+          <circle cx="119" cy="96" r="4.2" fill="#ffffff"/>
+          <ellipse cx="66" cy="112" rx="8" ry="4.5" fill="#fda4af" opacity="0.85"/>
+          <ellipse cx="134" cy="112" rx="8" ry="4.5" fill="#fda4af" opacity="0.85"/>
+          <ellipse cx="100" cy="110" rx="4.5" ry="3.2" fill="#1f1116"/>
+          <path d="M92 118 Q100 126 108 118" stroke="#1f1116" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <ellipse cx="52" cy="118" rx="10" ry="14" transform="rotate(-35 52 118)" fill="#1f1116"/>
+          <ellipse cx="148" cy="118" rx="10" ry="14" transform="rotate(35 148 118)" fill="#1f1116"/>
+          <circle cx="42" cy="86" r="5" fill="#fbcfe8" opacity="0.9"/>
+          <circle cx="160" cy="82" r="4.5" fill="#f9a8d4" opacity="0.9"/>
+          <path d="M100 166 C100 166 74 149 74 133 C74 124 81 118 89 118 C95 118 98 122 100 125 C102 122 105 118 111 118 C119 118 126 124 126 133 C126 149 100 166 100 166 Z" fill="#fb7185"/>
+        </svg>
+      </div>
+
+      <p class="font-serif-display italic text-base sm:text-lg text-rose-200/85 mb-7">
+        I made something special just for you, Rasmalai...
+      </p>
+
+      <button id="continueToBirthdayBtn" class="btn-glow-pill">
+        Continue
+      </button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SCREEN 4: "HAPPY BIRTHDAY RASMALAI 🎀" COUNTER SCREEN
+  ========================================================== -->
+  <section id="screen-4" class="screen">
+    <div class="flex flex-col items-center text-center max-w-lg w-full px-3">
+      
+      <!-- Peeking Kawaii Panda with Flickering Birthday Cake -->
+      <div class="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full crimson-glass flex items-center justify-center mb-4 panda-bob shadow-[0_0_45px_rgba(244,63,94,0.35)]">
+        <svg viewBox="0 0 220 200" class="w-28 h-28 sm:w-32 sm:h-32">
+          <circle cx="72" cy="54" r="14" fill="#1f1116"/>
+          <circle cx="148" cy="54" r="14" fill="#1f1116"/>
+          <g transform="translate(64, 40) rotate(-18)">
+            <polygon points="0,0 -11,-7 -11,7" fill="#e11d48"/>
+            <polygon points="0,0 11,-7 11,7" fill="#e11d48"/>
+            <circle cx="0" cy="0" r="3.5" fill="#fda4af"/>
+          </g>
+          <ellipse cx="110" cy="84" rx="44" ry="35" fill="#ffffff"/>
+          <ellipse cx="92" cy="82" rx="10" ry="13" transform="rotate(-14 92 82)" fill="#1f1116"/>
+          <ellipse cx="128" cy="82" rx="10" ry="13" transform="rotate(14 128 82)" fill="#1f1116"/>
+          <circle cx="94" cy="80" r="3.6" fill="#ffffff"/>
+          <circle cx="126" cy="80" r="3.6" fill="#ffffff"/>
+          <ellipse cx="81" cy="94" rx="7" ry="4" fill="#fda4af" opacity="0.85"/>
+          <ellipse cx="139" cy="94" rx="7" ry="4" fill="#fda4af" opacity="0.85"/>
+          <ellipse cx="110" cy="92" rx="4" ry="2.8" fill="#1f1116"/>
+          <path d="M104 99 Q110 105 116 99" stroke="#1f1116" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+
+          <!-- Mini Birthday Cake -->
+          <rect x="74" y="138" width="72" height="28" rx="6" fill="#be123c"/>
+          <path d="M74 138 Q83 147 92 138 Q101 147 110 138 Q119 147 128 138 Q137 147 146 138 L146 134 L74 134 Z" fill="#ffe4e6"/>
+          <ellipse cx="110" cy="168" rx="46" ry="7" fill="#fda4af" opacity="0.45"/>
+
+          <rect x="94" y="118" width="5" height="16" rx="2" fill="#fde047"/>
+          <rect x="108" y="116" width="5" height="18" rx="2" fill="#fb7185"/>
+          <rect x="122" y="118" width="5" height="16" rx="2" fill="#38bdf8"/>
+
+          <ellipse cx="96.5" cy="113" rx="3.2" ry="5.5" fill="#fb923c" class="candle-flame"/>
+          <ellipse cx="110.5" cy="111" rx="3.2" ry="5.5" fill="#fb923c" class="candle-flame"/>
+          <ellipse cx="124.5" cy="113" rx="3.2" ry="5.5" fill="#fb923c" class="candle-flame"/>
+
+          <ellipse cx="76" cy="128" rx="9" ry="7" fill="#1f1116"/>
+          <ellipse cx="144" cy="128" rx="9" ry="7" fill="#1f1116"/>
+        </svg>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="font-serif-display text-3xl sm:text-5xl font-semibold gradient-serif-text mb-1.5 leading-tight">
+        Happy Birthday Rasmalai <span class="inline-block drop-shadow-[0_0_12px_rgba(244,63,94,0.8)]">🎀</span>
+      </h1>
+
+      <div class="flex items-center justify-center gap-2 text-xs text-rose-200/75 mb-4">
+        <span>Born 26 November</span>
+        <select id="birthYearSelect" aria-label="Birth Year" class="bg-rose-950/75 border border-rose-500/35 rounded-full px-2.5 py-0.5 text-[11px] text-rose-100 focus:outline-none cursor-pointer">
+          <option value="2008">2008</option>
+          <option value="2007" selected>2007</option>
+          <option value="2006">2006</option>
+          <option value="2005">2005</option>
+          <option value="2004">2004</option>
+          <option value="2003">2003</option>
+          <option value="2002">2002</option>
+          <option value="2001">2001</option>
+          <option value="2000">2000</option>
+        </select>
+      </div>
+
+      <p class="text-xs text-rose-200/70 tracking-wider mb-3">You have completed</p>
+
+      <!-- Live Years • Months • Days Counter -->
+      <div class="grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-sm mb-7">
+        <div class="flex flex-col items-center">
+          <span id="statYears" class="text-4xl sm:text-5xl font-bold text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.45)]">19</span>
+          <span class="text-[10px] tracking-[0.22em] text-rose-300/80 uppercase mt-1.5">YEARS</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span id="statMonths" class="text-4xl sm:text-5xl font-bold text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.45)]">0</span>
+          <span class="text-[10px] tracking-[0.22em] text-rose-300/80 uppercase mt-1.5">MONTHS</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span id="statDays" class="text-4xl sm:text-5xl font-bold text-white drop-shadow-[0_0_18px_rgba(255,255,255,0.45)]">0</span>
+          <span class="text-[10px] tracking-[0.22em] text-rose-300/80 uppercase mt-1.5">DAYS</span>
+        </div>
+      </div>
+
+      <button id="toCakeBtn" type="button" class="btn-glow-pill">
+        NEXT 🎂
+      </button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SCREEN 5: INTERACTIVE CAKE CUTTING CEREMONY ("MAKE A WISH & CUT THE CAKE 🎂")
+  ========================================================== -->
+  <section id="screen-5" class="screen">
+    <div class="flex flex-col items-center text-center max-w-md w-full px-3 relative z-20">
+      
+      <h1 class="font-serif-display text-3xl sm:text-4xl font-semibold gradient-serif-text mb-1 leading-tight">
+        Make a Wish &amp; Cut the Cake 🎂
+      </h1>
+      <p id="cakeInstructionText" class="text-xs sm:text-sm text-rose-200/85 mb-2">
+        Swipe across the cake or tap Cut the Cake ✨
+      </p>
+
+      <!-- Studio-Shaded Realistic Luxury Bakery Cake Canvas Stage -->
+      <div id="cakeCeremonyStage" class="cake-ceremony-stage mb-2 select-none" role="button" tabindex="0" aria-label="Swipe or tap to cut the birthday cake">
+        <canvas id="cakeCanvas"></canvas>
+      </div>
+
+      <!-- Primary Action Controls -->
+      <div class="relative z-30 flex flex-col items-center gap-2 w-full">
+        <button id="cutCakeActionBtn" type="button" class="btn-glow-pill pointer-events-auto">
+          Cut the Cake 🎂
+        </button>
+
+        <button id="afterCakeNextBtn" type="button" class="btn-glow-pill pointer-events-auto hidden">
+          NEXT: SPECIAL MEMORIES ✨
+        </button>
+
+        <button id="skipCakeFallbackBtn" type="button" class="text-[11px] tracking-wider text-rose-300/75 hover:text-white underline underline-offset-4 py-1 px-3 cursor-pointer pointer-events-auto transition">
+          Skip / Continue →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SCREEN 6: "SPECIAL MEMORIES" 3D COVERFLOW GALLERY
+  ========================================================== -->
+  <section id="screen-6" class="screen">
+    <div class="flex flex-col items-center text-center w-full max-w-4xl">
+      
+      <h1 class="font-serif-display text-3xl sm:text-4xl font-semibold gradient-serif-text mb-1">
+        Special Memories
+      </h1>
+      <p class="text-xs text-rose-200/75 tracking-wider mb-4">
+        Swipe or drag for more ➔
+      </p>
+
+      <div id="coverflowStage" class="coverflow-stage mb-4"></div>
+
+      <div id="carouselDots" class="flex items-center gap-2 mb-5 flex-wrap justify-center max-w-xs"></div>
+
+      <button id="toLetterBtn" type="button" class="btn-glow-pill">
+        💌 MESSAGE
+      </button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SCREEN 7: "A LETTER, JUST FOR YOU" & CELEBRATION MODAL
+  ========================================================== -->
+  <section id="screen-7" class="screen">
+    <!-- Phase A: Interactive 3D Wax-Sealed Envelope -->
+    <div id="envelopeStage" class="flex flex-col items-center text-center w-full max-w-md transition-all duration-500">
+      <h1 class="font-serif-display text-3xl sm:text-4xl font-semibold gradient-serif-text mb-1.5">
+        A Letter, Just For You
+      </h1>
+      <p class="text-xs text-rose-200/75 mb-7">
+        Tap the heart to unseal your message...
+      </p>
+
+      <div class="envelope-3d-wrapper">
+        <div id="envelope3dCard" class="envelope-3d-card crimson-glass flex flex-col items-center justify-center p-6 group hover:border-rose-400/75 hover:shadow-[0_0_55px_rgba(244,63,94,0.45)]">
+          <svg class="envelope-top-flap" viewBox="0 0 340 130" preserveAspectRatio="none">
+            <polygon points="0,0 340,0 170,115" fill="rgba(48, 12, 22, 0.94)" stroke="rgba(255, 110, 130, 0.35)" stroke-width="1.5"/>
+          </svg>
+          <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30" viewBox="0 0 340 230" preserveAspectRatio="none">
+            <polyline points="0,230 170,115 340,230" fill="none" stroke="#fb7185" stroke-width="1.2"/>
+          </svg>
+
+          <div class="relative z-10 w-16 h-16 rounded-full bg-rose-950/90 border border-rose-400/55 flex items-center justify-center shadow-[0_0_28px_rgba(244,63,94,0.65)] heart-pulse mb-3">
+            <span class="text-2xl text-rose-300">♡</span>
+          </div>
+
+          <span id="sealLabel" class="relative z-10 text-[10px] tracking-[0.28em] text-rose-200/85 uppercase font-semibold">
+            TAP TO OPEN
+          </span>
+        </div>
+      </div>
+
+      <span class="mt-4 text-rose-400/80 text-sm">♥</span>
+    </div>
+
+    <!-- Phase B: Opened Love Letter Modal ("JUST FOR YOU ✨" — Only CELEBRATE 🎉 Button) -->
+    <div id="letterStage" class="hidden opacity-0 scale-95 transition-all duration-500 w-full max-w-md flex-col items-center">
+      <div class="crimson-glass w-full rounded-[28px] p-6 sm:p-7 relative">
+        <div class="text-center border-b border-rose-500/20 pb-3.5 mb-4">
+          <h2 class="font-serif-display text-lg sm:text-xl tracking-[0.18em] font-semibold gradient-serif-text">
+            JUST FOR YOU ✨
+          </h2>
+          <p class="font-serif-display italic text-xs text-rose-200/65 mt-0.5">
+            From my heart to yours
+          </p>
+        </div>
+
+        <div id="letterTextContainer" class="custom-scroll h-56 sm:h-64 overflow-y-auto pr-2 text-left">
+          <p id="typedLetterText" class="font-serif-display text-base sm:text-[17px] leading-relaxed text-rose-50/95 whitespace-pre-line"></p>
+        </div>
+
+        <div class="mt-6 flex items-center justify-center">
+          <button id="celebrateBtn" type="button" class="btn-glow-pill w-full max-w-[260px] !py-3 !text-xs">
+            CELEBRATE 🎉
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SCREEN 8 (ONLY AT THE VERY END): THREE.JS 3D COSMIC STARFIELD POLAROID UNIVERSE
+  ========================================================== -->
+  <section id="screen-8" class="screen">
+    <div id="threeCosmicContainer"></div>
+
+    <div class="cosmic-zoom-pill">
+      <button id="cosmicZoomOutBtn" type="button" class="cosmic-zoom-btn" title="Zoom Out" aria-label="Zoom Out">−</button>
+      <div class="w-px h-4 bg-white/15 mx-0.5"></div>
+      <button id="cosmicZoomInBtn" type="button" class="cosmic-zoom-btn" title="Zoom In" aria-label="Zoom In">+</button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       POLAROID LIGHTBOX MODAL (Card #1c1e24, Cyan Download + Heart)
+  ========================================================== -->
+  <div id="polaroidLightbox" class="lightbox-backdrop">
+    <div class="lightbox-polaroid">
+      <div id="lightboxMediaContainer" class="w-full aspect-[4/5] rounded-[11px] overflow-hidden bg-black/90 flex items-center justify-center"></div>
+
+      <h3 id="lightboxCaptionTitle" class="text-center text-white font-semibold text-base sm:text-lg tracking-wide mt-3.5 mb-3">
+        1. Malkin g 😶
+      </h3>
+
+      <div class="flex items-center gap-2.5">
+        <button id="lightboxDownloadBtn" type="button" class="btn-cyan-download flex-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3" />
+          </svg>
+          <span>Download</span>
+        </button>
+
+        <button id="lightboxHeartBtn" type="button" class="btn-cyan-heart" title="Favorite" aria-label="Favorite">
+          ♡
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT APPLICATION LOGIC
+  ========================================================== -->
+  <script>
+    (function () {
+      /* -------------------------------------------------------
+         1. STATE & USER'S 10 NUMBERED MEMORIES STORE
+      -------------------------------------------------------- */
+      const CORRECT_PASSKEY = "2611"; // 26 November Birthday Date
+      let enteredPin = "";
+      let currentScreen = 1;
+      let activePhotoIndex = 0;
+      let soundEnabled = false;
+      let typewriterTimer = null;
+      let wheelCooldown = false;
+      let birthdayLiveTimer = null;
+
+      // All numbered photos and videos provided by the user
+      const memoriesData = [
+        {
+          id: "m1",
+          url: "Malkin g.jpeg",
+          poster: "Malkin g.jpeg",
+          type: "image",
+          caption: "1. Malkin g 😶",
+          liked: true,
+          filename: "Malkin g.jpeg"
+        },
+        {
+          id: "m2",
+          url: "Rasmlai.jpeg",
+          poster: "Rasmlai.jpeg",
+          type: "image",
+          caption: "2. Rasmlai 😘",
+          liked: true,
+          filename: "Rasmlai.jpeg"
+        },
+        {
+          id: "m3",
+          url: "Golgappa.jpeg",
+          poster: "Golgappa.jpeg",
+          type: "image",
+          caption: "3. Golgappa 😶‍🌫️",
+          liked: false,
+          filename: "Golgappa.jpeg"
+        },
+        {
+          id: "m4",
+          url: "cor meum.jpeg",
+          poster: "cor meum.jpeg",
+          type: "image",
+          caption: "4. Cor meum 💕",
+          liked: true,
+          filename: "cor meum.jpeg"
+        },
+        {
+          id: "m5",
+          url: "sweet potato.jpeg",
+          poster: "sweet potato.jpeg",
+          type: "image",
+          caption: "5. sweet potato 🥲",
+          liked: false,
+          filename: "sweet potato.jpeg"
+        },
+        {
+          id: "m6",
+          url: "angry bird.jpeg",
+          poster: "angry bird.jpeg",
+          type: "image",
+          caption: "6. Angry bird 😶‍🌫️",
+          liked: false,
+          filename: "angry bird.jpeg"
+        },
+        {
+          id: "m7",
+          url: "daraokhaza.jpeg",
+          poster: "daraokhaza.jpeg",
+          type: "image",
+          caption: "7. Daraokhaza 💫",
+          liked: true,
+          filename: "daraokhaza.jpeg"
+        },
+        {
+          id: "m8",
+          url: "my fav video.mp4",
+          poster: "Malkin g.jpeg",
+          type: "video",
+          caption: "8. My Fav video 🌝",
+          liked: true,
+          filename: "my fav video.mp4"
+        },
+        {
+          id: "m9",
+          url: "dilnasheen.jpeg",
+          poster: "dilnasheen.jpeg",
+          type: "image",
+          caption: "9. Dilnasheen 💕",
+          liked: true,
+          filename: "dilnasheen.jpeg"
+        },
+        {
+          id: "m10",
+          url: "darling.mp4",
+          poster: "dilnasheen.jpeg",
+          type: "video",
+          caption: "10. my fav video 🫠",
+          liked: true,
+          filename: "darling.mp4"
+        },
+        {
+          id: "m11",
+          url: "Cutie pie.jpeg",
+          poster: "Cutie pie.jpeg",
+          type: "image",
+          caption: "11. Cutie pie 🌙",
+          liked: true,
+          filename: "Cutie pie.jpeg"
+        },
+        {
+          id: "m12",
+          url: "aik mri bhi.jpeg",
+          poster: "aik mri bhi.jpeg",
+          type: "image",
+          caption: "12. your czn 🌟",
+          liked: true,
+          filename: "aik mri bhi.jpeg"
+        },
+        {
+          id: "m13",
+          url: "kuchupucho.jpeg",
+          poster: "kuchupucho.jpeg",
+          type: "image",
+          caption: "13. Kuchu Pucho 💫",
+          liked: true,
+          filename: "kuchupucho.jpeg"
+        }
+      ];
+
+      let mediaItems = JSON.parse(JSON.stringify(memoriesData));
+
+      const loveLetterMessage =
+`Happy Birthday, Rasmalai ❤️
+
+You are the most beautiful part of my life, and I'm so lucky to have you. Your smile makes my days brighter, and your presence makes everything feel magical. I hope your birthday is filled with endless happiness, love, and unforgettable moments.
+
+Always keep smiling — because your happiness means the whole universe to me. ❤️`;
+
+      /* -------------------------------------------------------
+         2. SUBTLE SYNTHESIZED SOUND EFFECTS (Tone.js)
+      -------------------------------------------------------- */
+      let synth = null;
+      function playNote(note, duration = "16n") {
+        if (!soundEnabled || typeof Tone === "undefined") return;
+        try {
+          if (!synth) {
+            synth = new Tone.PolySynth(Tone.Synth, {
+              oscillator: { type: "sine" },
+              envelope: { attack: 0.02, decay: 0.25, sustain: 0.1, release: 0.8 }
+            }).toDestination();
+            synth.volume.value = -10;
+          }
+          if (Tone.context.state !== "running") Tone.start();
+          synth.triggerAttackRelease(note, duration);
+        } catch (e) {}
+      }
+
+      document.getElementById("toggleSoundBtn").addEventListener("click", () => {
+        soundEnabled = !soundEnabled;
+        document.getElementById("soundIcon").textContent = soundEnabled ? "🔊" : "🔇";
+        if (soundEnabled) playNote("E5", "8n");
+      });
+
+      /* -------------------------------------------------------
+         3. FLOATING ROSE BOKEH PARTICLES (Screens 1-7)
+      -------------------------------------------------------- */
+      function initFloatingParticles() {
+        const container = document.getElementById("particles-container");
+        const count = 30;
+        for (let i = 0; i < count; i++) {
+          const p = document.createElement("div");
+          p.className = "particle";
+          const isGold = Math.random() > 0.65;
+          p.style.left = `${Math.random() * 100}vw`;
+          const size = 2.5 + Math.random() * 4;
+          p.style.width = `${size}px`;
+          p.style.height = `${size}px`;
+          if (isGold) {
+            p.style.background = "#fde68a";
+            p.style.boxShadow = "0 0 10px #f59e0b, 0 0 16px #fbbf24";
+          } else {
+            p.style.background = "#ffccd5";
+            p.style.boxShadow = "0 0 10px #ff4d6d, 0 0 18px #ff758f";
+          }
+          p.style.animationDuration = `${9 + Math.random() * 11}s`;
+          p.style.animationDelay = `${-Math.random() * 14}s`;
+          container.appendChild(p);
+        }
+      }
+
+      /* -------------------------------------------------------
+         4. SCREEN NAVIGATION HELPER
+      -------------------------------------------------------- */
+      function goToScreen(num) {
+        currentScreen = num;
+        document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+        const target = document.getElementById(`screen-${num}`);
+        if (target) target.classList.add("active");
+
+        const isSpace = num === 8;
+        document.getElementById("ambientBackdrop").style.opacity = isSpace ? "0" : "1";
+        document.getElementById("particles-container").style.opacity = isSpace ? "0" : "1";
+      }
+
+      /* -------------------------------------------------------
+         5. SCREEN 1: PASSCODE LOCK LOGIC (2611 = 26 November)
+      -------------------------------------------------------- */
+      const pinDots = document.querySelectorAll(".pin-dot");
+      const pinDisplayBox = document.getElementById("pinDisplayBox");
+      const pinErrorMsg = document.getElementById("pinErrorMsg");
+
+      function updatePinUI(isError = false) {
+        pinDots.forEach((dot, idx) => {
+          dot.classList.remove("active", "error");
+          if (isError) {
+            dot.classList.add("error");
+          } else if (idx < enteredPin.length) {
+            dot.classList.add("active");
+          }
+        });
+      }
+
+      function validatePasskey() {
+        if (enteredPin === CORRECT_PASSKEY) {
+          playNote(["C5", "E5", "G5", "B5"], "8n");
+          setTimeout(() => {
+            startLoadingSequence();
+          }, 260);
+        } else {
+          playNote("C3", "8n");
+          updatePinUI(true);
+          pinDisplayBox.classList.add("animate-shake");
+          pinErrorMsg.style.opacity = "1";
+          setTimeout(() => {
+            pinDisplayBox.classList.remove("animate-shake");
+            enteredPin = "";
+            updatePinUI(false);
+          }, 600);
+          setTimeout(() => {
+            pinErrorMsg.style.opacity = "0";
+          }, 2500);
+        }
+      }
+
+      function handleDigitInput(digit) {
+        if (currentScreen !== 1) return;
+        if (enteredPin.length >= 4) return;
+        enteredPin += String(digit);
+        playNote("C5");
+        updatePinUI();
+
+        if (enteredPin.length === 4) {
+          validatePasskey();
+        }
+      }
+
+      function clearPinInput() {
+        enteredPin = "";
+        playNote("A4");
+        updatePinUI();
+      }
+
+      function backspacePinInput() {
+        if (enteredPin.length > 0) {
+          enteredPin = enteredPin.slice(0, -1);
+          playNote("B4");
+          updatePinUI();
+        }
+      }
+
+      function flashKeypadButton(selector) {
+        const btn = document.querySelector(selector);
+        if (!btn) return;
+        btn.classList.add("key-pressed");
+        setTimeout(() => btn.classList.remove("key-pressed"), 140);
+      }
+
+      function bindInstantPress(el, handler) {
+        if (!el) return;
+        let lastTriggeredAt = 0;
+        const trigger = (e) => {
+          if (e.type === "pointerdown" && e.button !== undefined && e.button !== 0) return;
+          const now = Date.now();
+          if (now - lastTriggeredAt < 180) return;
+          lastTriggeredAt = now;
+          e.stopPropagation();
+          handler();
+        };
+        el.addEventListener("pointerdown", trigger);
+        el.addEventListener("click", trigger);
+      }
+
+      document.querySelectorAll(".keypad-btn[data-key]").forEach(btn => {
+        bindInstantPress(btn, () => {
+          flashKeypadButton(`.keypad-btn[data-key="${btn.dataset.key}"]`);
+          handleDigitInput(btn.dataset.key);
+        });
+      });
+
+      bindInstantPress(document.getElementById("keypadClear"), () => {
+        flashKeypadButton("#keypadClear");
+        clearPinInput();
+      });
+
+      bindInstantPress(document.getElementById("keypadBackspace"), () => {
+        flashKeypadButton("#keypadBackspace");
+        backspacePinInput();
+      });
+
+      bindInstantPress(document.getElementById("keypadUnlockBtn"), () => {
+        validatePasskey();
+      });
+
+      // Physical Keyboard Input Support (0-9, Numpad 0-9, Backspace, Escape, Enter) on Screen 1
+      window.addEventListener("keydown", (e) => {
+        const activeTag = document.activeElement ? document.activeElement.tagName : "";
+        if (activeTag === "INPUT" || activeTag === "TEXTAREA" || activeTag === "SELECT") {
+          return;
+        }
+
+        const isHintOpen = !document.getElementById("hintModal").classList.contains("pointer-events-none");
+        const isLightboxOpen = document.getElementById("polaroidLightbox").classList.contains("open");
+
+        if (isHintOpen) {
+          if (e.key === "Escape") closeHint();
+          return;
+        }
+        if (isLightboxOpen) {
+          if (e.key === "Escape") closePolaroidLightbox();
+          return;
+        }
+
+        if (currentScreen === 1) {
+          let digit = null;
+          if (/^[0-9]$/.test(e.key)) {
+            digit = e.key;
+          } else if (/^Numpad[0-9]$/.test(e.code)) {
+            digit = e.code.replace("Numpad", "");
+          }
+
+          if (digit !== null) {
+            e.preventDefault();
+            flashKeypadButton(`.keypad-btn[data-key="${digit}"]`);
+            handleDigitInput(digit);
+          } else if (e.key === "Backspace" || e.key === "Delete") {
+            e.preventDefault();
+            flashKeypadButton("#keypadBackspace");
+            backspacePinInput();
+          } else if (e.key === "Escape") {
+            e.preventDefault();
+            flashKeypadButton("#keypadClear");
+            clearPinInput();
+          } else if (e.key === "Enter" || e.code === "NumpadEnter") {
+            e.preventDefault();
+            validatePasskey();
+          }
+          return;
+        }
+
+        if (currentScreen === 6) {
+          if (e.key === "ArrowRight") rotateCoverflow(1);
+          else if (e.key === "ArrowLeft") rotateCoverflow(-1);
+        }
+      });
+
+      // Hint Modal Open/Close
+      const hintModal = document.getElementById("hintModal");
+      const hintModalContent = document.getElementById("hintModalContent");
+
+      function openHintModal() {
+        playNote("G5");
+        hintModal.classList.remove("opacity-0", "pointer-events-none");
+        hintModalContent.classList.remove("scale-95");
+        hintModalContent.classList.add("scale-100");
+      }
+
+      document.getElementById("avatarHintTrigger").addEventListener("click", openHintModal);
+      document.getElementById("moonHintTextTrigger").addEventListener("click", openHintModal);
+
+      function closeHint() {
+        hintModal.classList.add("opacity-0", "pointer-events-none");
+        hintModalContent.classList.add("scale-95");
+        hintModalContent.classList.remove("scale-100");
+      }
+
+      document.getElementById("closeHintModal").addEventListener("click", closeHint);
+      hintModal.addEventListener("click", (e) => {
+        if (e.target === hintModal) closeHint();
+      });
+
+      /* -------------------------------------------------------
+         6. SCREEN 2 -> SCREEN 3 ("Hmm" Loading -> "It's Your Special Day 🌸")
+      -------------------------------------------------------- */
+      function startLoadingSequence() {
+        goToScreen(2);
+        const bar = document.getElementById("loadingBarFill");
+        const statusText = document.getElementById("loadingStatusText");
+        let progress = 0;
+        bar.style.width = "0%";
+        statusText.textContent = "Hmm...";
+
+        const interval = setInterval(() => {
+          progress += 4;
+          bar.style.width = `${Math.min(progress, 100)}%`;
+
+          if (progress === 48) {
+            statusText.textContent = "Loading something special...";
+          }
+
+          if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+              playNote(["E5", "G5", "B5"], "4n");
+              goToScreen(3);
+            }, 250);
+          }
+        }, 70);
+      }
+
+      document.getElementById("continueToBirthdayBtn").addEventListener("click", () => {
+        playNote(["C5", "G5"], "8n");
+        updateBirthdayStats();
+        scheduleBirthdayMidnightUpdate();
+        goToScreen(4);
+      });
+
+      /* -------------------------------------------------------
+         7. SCREEN 4: "HAPPY BIRTHDAY RASMALAI 🎀" COUNTER
+      -------------------------------------------------------- */
+      function updateBirthdayStats() {
+        const birthYear = parseInt(document.getElementById("birthYearSelect").value, 10);
+        const now = new Date();
+        const nowUtc = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+        const birthUtc = Date.UTC(birthYear, 10, 26);
+
+        if (nowUtc < birthUtc) {
+          document.getElementById("statYears").textContent = "0";
+          document.getElementById("statMonths").textContent = "0";
+          document.getElementById("statDays").textContent = "0";
+          return;
+        }
+
+        let years = now.getFullYear() - birthYear;
+        let anchor = new Date(Date.UTC(now.getFullYear(), 10, 26));
+
+        if (nowUtc < anchor.getTime()) {
+          years -= 1;
+          anchor = new Date(Date.UTC(now.getFullYear() - 1, 10, 26));
+        }
+
+        let months = 0;
+        while (months < 12) {
+          const nextAnchor = new Date(Date.UTC(anchor.getUTCFullYear(), anchor.getUTCMonth() + months + 1, 26));
+          if (nextAnchor.getTime() > nowUtc) break;
+          months += 1;
+        }
+
+        const monthAnchor = new Date(Date.UTC(anchor.getUTCFullYear(), anchor.getUTCMonth() + months, 26));
+        const elapsedDays = Math.floor((nowUtc - monthAnchor.getTime()) / 86400000);
+        const days = Math.max(0, elapsedDays);
+
+        document.getElementById("statYears").textContent = Math.max(0, years);
+        document.getElementById("statMonths").textContent = months;
+        document.getElementById("statDays").textContent = days;
+      }
+
+      function scheduleBirthdayMidnightUpdate() {
+        if (birthdayLiveTimer) clearTimeout(birthdayLiveTimer);
+
+        const now = new Date();
+        const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 50);
+        const millisecondsUntilMidnight = nextMidnight.getTime() - now.getTime();
+
+        birthdayLiveTimer = setTimeout(() => {
+          updateBirthdayStats();
+          scheduleBirthdayMidnightUpdate();
+        }, millisecondsUntilMidnight);
+      }
+
+      document.getElementById("birthYearSelect").addEventListener("change", () => {
+        updateBirthdayStats();
+        scheduleBirthdayMidnightUpdate();
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) {
+          updateBirthdayStats();
+          scheduleBirthdayMidnightUpdate();
+        }
+      });
+
+      document.getElementById("toCakeBtn").addEventListener("click", () => {
+        playNote(["D5", "A5"], "8n");
+        goToScreen(5);
+        startLuxuryCakeRender();
+      });
+
+      /* -------------------------------------------------------
+         8. SCREEN 5: STUDIO-SHADED REALISTIC LUXURY CAKE & REAL-LIFE WEDGE CUTTING
+      -------------------------------------------------------- */
+      const cakeCeremonyStage = document.getElementById("cakeCeremonyStage");
+      const cakeCanvas = document.getElementById("cakeCanvas");
+      const cakeCtx = cakeCanvas.getContext("2d");
+      const cutCakeActionBtn = document.getElementById("cutCakeActionBtn");
+      const afterCakeNextBtn = document.getElementById("afterCakeNextBtn");
+      const skipCakeFallbackBtn = document.getElementById("skipCakeFallbackBtn");
+      const cakeInstructionText = document.getElementById("cakeInstructionText");
+
+      let cakeState = {
+        phase: "idle",
+        phaseTime: 0,
+        flameScale: 1,
+        emberGlow: 0,
+        smokeProgress: 0,
+        knifeProgress: 0,
+        sliceOut: 0,
+        sparkles: [],
+        animId: null,
+        offscreenTopWhole: null,
+        offscreenTopCut: null,
+        offscreenSliceTop: null
+      };
+
+      function resizeCakeCanvas() {
+        if (!cakeCanvas) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = cakeCeremonyStage.getBoundingClientRect();
+        const w = rect.width || 400;
+        const h = rect.height || 330;
+        cakeCanvas.width = w * dpr;
+        cakeCanvas.height = h * dpr;
+        cakeCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildCakeTopTextures();
+      }
+
+      function buildCakeTopTextures() {
+        const size = 512;
+        const cx = size / 2;
+        const cy = size / 2;
+        const R = 216;
+
+        function paintTopDesign(ctx2d) {
+          ctx2d.clearRect(0, 0, size, size);
+
+          ctx2d.save();
+          ctx2d.beginPath();
+          ctx2d.arc(cx, cy, R, 0, Math.PI * 2);
+          ctx2d.clip();
+
+          const topGrad = ctx2d.createRadialGradient(cx - 45, cy - 55, 18, cx, cy, R);
+          topGrad.addColorStop(0, "#fff8f9");
+          topGrad.addColorStop(0.55, "#ffe4e9");
+          topGrad.addColorStop(0.88, "#fecdd6");
+          topGrad.addColorStop(1, "#fda4b8");
+          ctx2d.fillStyle = topGrad;
+          ctx2d.fillRect(0, 0, size, size);
+
+          const sheen = ctx2d.createLinearGradient(cx - R, cy - R, cx + R * 0.6, cy + R * 0.4);
+          sheen.addColorStop(0, "rgba(255, 255, 255, 0.58)");
+          sheen.addColorStop(0.45, "rgba(255, 255, 255, 0.08)");
+          sheen.addColorStop(1, "rgba(190, 24, 60, 0.08)");
+          ctx2d.fillStyle = sheen;
+          ctx2d.fillRect(0, 0, size, size);
+
+          ctx2d.beginPath();
+          ctx2d.arc(cx, cy, R - 26, 0, Math.PI * 2);
+          ctx2d.strokeStyle = "rgba(217, 155, 38, 0.48)";
+          ctx2d.lineWidth = 1.8;
+          ctx2d.stroke();
+
+          const rosetteCount = 28;
+          for (let i = 0; i < rosetteCount; i++) {
+            const a = (i / rosetteCount) * Math.PI * 2;
+            const rx = cx + Math.cos(a) * (R - 13);
+            const ry = cy + Math.sin(a) * (R - 13);
+
+            ctx2d.save();
+            ctx2d.translate(rx, ry);
+            ctx2d.rotate(a + Math.PI / 2);
+
+            const rGrad = ctx2d.createRadialGradient(-2, -3, 1, 0, 0, 14);
+            rGrad.addColorStop(0, "#ffffff");
+            rGrad.addColorStop(0.7, "#fff1f2");
+            rGrad.addColorStop(1, "#fbcfe8");
+
+            ctx2d.fillStyle = rGrad;
+            ctx2d.shadowColor = "rgba(136, 19, 55, 0.22)";
+            ctx2d.shadowBlur = 4;
+            ctx2d.shadowOffsetY = 2;
+            ctx2d.beginPath();
+            ctx2d.ellipse(0, 0, 13, 9, 0, 0, Math.PI * 2);
+            ctx2d.fill();
+            ctx2d.restore();
+          }
+
+          ctx2d.save();
+          ctx2d.textAlign = "center";
+          ctx2d.textBaseline = "middle";
+
+          ctx2d.font = "italic 700 38px 'Playfair Display', Georgia, serif";
+          ctx2d.fillStyle = "rgba(120, 12, 42, 0.24)";
+          ctx2d.fillText("Happy Birthday", cx + 2, cy - 8);
+
+          const rubyIcing = ctx2d.createLinearGradient(cx - 120, cy - 30, cx + 120, cy + 10);
+          rubyIcing.addColorStop(0, "#9f1239");
+          rubyIcing.addColorStop(0.5, "#e11d48");
+          rubyIcing.addColorStop(1, "#881337");
+          ctx2d.fillStyle = rubyIcing;
+          ctx2d.fillText("Happy Birthday", cx, cy - 11);
+
+          ctx2d.font = "700 46px 'Playfair Display', Georgia, serif";
+          ctx2d.fillStyle = "rgba(120, 12, 42, 0.28)";
+          ctx2d.fillText("Malkin G", cx + 2, cy + 40);
+
+          ctx2d.lineWidth = 3.2;
+          ctx2d.strokeStyle = "#d97706";
+          ctx2d.strokeText("Malkin G", cx, cy + 37);
+
+          const goldWhiteIcing = ctx2d.createLinearGradient(cx - 100, cy + 18, cx + 100, cy + 56);
+          goldWhiteIcing.addColorStop(0, "#fffbeb");
+          goldWhiteIcing.addColorStop(0.5, "#fde68a");
+          goldWhiteIcing.addColorStop(1, "#ffffff");
+          ctx2d.fillStyle = goldWhiteIcing;
+          ctx2d.fillText("Malkin G", cx, cy + 37);
+
+          const pearls = [
+            [-115, 38], [115, 38], [-98, -10], [98, -10], [0, 76], [-48, 72], [48, 72]
+          ];
+          pearls.forEach(([px, py]) => {
+            ctx2d.beginPath();
+            ctx2d.arc(cx + px, cy + py, 3.3, 0, Math.PI * 2);
+            ctx2d.fillStyle = "#f59e0b";
+            ctx2d.fill();
+            ctx2d.beginPath();
+            ctx2d.arc(cx + px - 1, cy + py - 1, 1.2, 0, Math.PI * 2);
+            ctx2d.fillStyle = "#ffffff";
+            ctx2d.fill();
+          });
+
+          ctx2d.restore();
+          ctx2d.restore();
+        }
+
+        const cWhole = document.createElement("canvas");
+        cWhole.width = size;
+        cWhole.height = size;
+        paintTopDesign(cWhole.getContext("2d"));
+        cakeState.offscreenTopWhole = cWhole;
+
+        const a1 = 0.26;
+        const a2 = 0.86;
+
+        const cCut = document.createElement("canvas");
+        cCut.width = size;
+        cCut.height = size;
+        const ctxCut = cCut.getContext("2d");
+        ctxCut.drawImage(cWhole, 0, 0);
+        ctxCut.save();
+        ctxCut.globalCompositeOperation = "destination-out";
+        ctxCut.beginPath();
+        ctxCut.moveTo(cx, cy);
+        ctxCut.arc(cx, cy, R + 8, a1, a2, false);
+        ctxCut.closePath();
+        ctxCut.fill();
+        ctxCut.restore();
+        cakeState.offscreenTopCut = cCut;
+
+        const cSlice = document.createElement("canvas");
+        cSlice.width = size;
+        cSlice.height = size;
+        const ctxSlice = cSlice.getContext("2d");
+        ctxSlice.save();
+        ctxSlice.beginPath();
+        ctxSlice.moveTo(cx, cy);
+        ctxSlice.arc(cx, cy, R + 2, a1, a2, false);
+        ctxSlice.closePath();
+        ctxSlice.clip();
+        ctxSlice.drawImage(cWhole, 0, 0);
+        ctxSlice.restore();
+        cakeState.offscreenSliceTop = cSlice;
+      }
+
+      function spawnBladeSparkles(x, y, count = 4) {
+        for (let i = 0; i < count; i++) {
+          cakeState.sparkles.push({
+            x: x + (Math.random() - 0.5) * 14,
+            y: y + (Math.random() - 0.5) * 10,
+            vx: (Math.random() - 0.5) * 48,
+            vy: -18 - Math.random() * 44,
+            size: 1.8 + Math.random() * 2.5,
+            alpha: 1,
+            color: Math.random() > 0.45 ? "#fde68a" : "#fda4af"
+          });
+        }
+      }
+
+      function renderLuxuryCakeFrame(now) {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const W = cakeCanvas.width / dpr;
+        const H = cakeCanvas.height / dpr;
+        const ctx = cakeCtx;
+
+        ctx.clearRect(0, 0, W, H);
+
+        const cx = W * 0.39;
+        const topY = H * 0.37;
+        const rx = Math.min(112, W * 0.285);
+        const ry = rx * 0.46;
+        const cakeHeight = 68;
+
+        const a1 = 0.26;
+        const a2 = 0.86;
+        const midAng = (a1 + a2) / 2;
+        const isCut = cakeState.sliceOut > 0.005;
+
+        const ambientGlow = ctx.createRadialGradient(cx, topY + cakeHeight + 34, 10, cx, topY + cakeHeight + 34, rx * 1.45);
+        ambientGlow.addColorStop(0, "rgba(251, 113, 133, 0.28)");
+        ambientGlow.addColorStop(0.6, "rgba(245, 158, 11, 0.1)");
+        ambientGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+        ctx.fillStyle = ambientGlow;
+        ctx.fillRect(0, 0, W, H);
+
+        const stemGrad = ctx.createLinearGradient(cx - 22, 0, cx + 22, 0);
+        stemGrad.addColorStop(0, "#78350f");
+        stemGrad.addColorStop(0.35, "#fde68a");
+        stemGrad.addColorStop(0.65, "#d97706");
+        stemGrad.addColorStop(1, "#451a03");
+        ctx.fillStyle = stemGrad;
+        ctx.beginPath();
+        ctx.moveTo(cx - 13, topY + cakeHeight + 14);
+        ctx.lineTo(cx + 13, topY + cakeHeight + 14);
+        ctx.lineTo(cx + 24, topY + cakeHeight + 48);
+        ctx.lineTo(cx - 24, topY + cakeHeight + 48);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(cx, topY + cakeHeight + 49, 48, 11, 0, 0, Math.PI * 2);
+        ctx.fillStyle = stemGrad;
+        ctx.fill();
+
+        const plateGrad = ctx.createLinearGradient(cx - rx - 20, topY + cakeHeight, cx + rx + 20, topY + cakeHeight + 22);
+        plateGrad.addColorStop(0, "#92400e");
+        plateGrad.addColorStop(0.3, "#fef3c7");
+        plateGrad.addColorStop(0.55, "#f59e0b");
+        plateGrad.addColorStop(0.85, "#fde68a");
+        plateGrad.addColorStop(1, "#78350f");
+
+        ctx.beginPath();
+        ctx.ellipse(cx, topY + cakeHeight + 12, rx + 20, ry + 10, 0, 0, Math.PI * 2);
+        ctx.fillStyle = plateGrad;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(cx, topY + cakeHeight + 9, rx + 16, ry + 7.5, 0, 0, Math.PI * 2);
+        ctx.fillStyle = "#fff8f9";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(cx, topY + cakeHeight + 5, rx + 2, ry + 1.5, 0, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(45, 5, 18, 0.42)";
+        ctx.fill();
+
+        function drawCrossSectionWall(x1, y1, x2, y2, height, shadeFactor) {
+          const bands = [
+            { t0: 0.0, t1: 0.28, color: shadeFactor > 0 ? "#a3143c" : "#7c0e2d" },
+            { t0: 0.28, t1: 0.38, color: shadeFactor > 0 ? "#fff5f7" : "#f3dce2" },
+            { t0: 0.38, t1: 0.66, color: shadeFactor > 0 ? "#be123c" : "#881337" },
+            { t0: 0.66, t1: 0.76, color: shadeFactor > 0 ? "#ffe4e8" : "#ebd0d7" },
+            { t0: 0.76, t1: 1.0, color: shadeFactor > 0 ? "#9f1239" : "#700c28" }
+          ];
+          bands.forEach(b => {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1 + height * b.t0);
+            ctx.lineTo(x2, y2 + height * b.t0);
+            ctx.lineTo(x2, y2 + height * b.t1);
+            ctx.lineTo(x1, y1 + height * b.t1);
+            ctx.closePath();
+            ctx.fillStyle = b.color;
+            ctx.fill();
+          });
+
+          ctx.beginPath();
+          ctx.moveTo(x1, y1 + 1);
+          ctx.lineTo(x2, y2 + 1);
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.55)";
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
+
+        const sideGrad = ctx.createLinearGradient(cx - rx, topY, cx + rx, topY);
+        sideGrad.addColorStop(0, "#590920");
+        sideGrad.addColorStop(0.22, "#9f1239");
+        sideGrad.addColorStop(0.5, "#be123c");
+        sideGrad.addColorStop(0.78, "#881337");
+        sideGrad.addColorStop(1, "#4c0519");
+
+        if (!isCut) {
+          ctx.beginPath();
+          ctx.ellipse(cx, topY, rx, ry, 0, 0, Math.PI, false);
+          ctx.lineTo(cx - rx, topY + cakeHeight);
+          ctx.ellipse(cx, topY + cakeHeight, rx, ry, 0, Math.PI, 0, true);
+          ctx.closePath();
+          ctx.fillStyle = sideGrad;
+          ctx.fill();
+
+          ctx.strokeStyle = "#fde68a";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.ellipse(cx, topY + cakeHeight - 1.5, rx, ry, 0, 0.03, Math.PI - 0.03, false);
+          ctx.stroke();
+        } else {
+          const p1x = cx + Math.cos(a1) * rx;
+          const p1y = topY + Math.sin(a1) * ry;
+          const p2x = cx + Math.cos(a2) * rx;
+          const p2y = topY + Math.sin(a2) * ry;
+
+          ctx.beginPath();
+          ctx.moveTo(cx, topY + cakeHeight);
+          ctx.lineTo(p1x, p1y + cakeHeight);
+          ctx.lineTo(p2x, p2y + cakeHeight);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(45, 5, 18, 0.55)";
+          ctx.fill();
+
+          drawCrossSectionWall(cx, topY, p1x, p1y, cakeHeight, 1);
+          drawCrossSectionWall(cx, topY, p2x, p2y, cakeHeight, -1);
+
+          ctx.beginPath();
+          ctx.ellipse(cx, topY, rx, ry, 0, a2, Math.PI, false);
+          ctx.lineTo(cx - rx, topY + cakeHeight);
+          ctx.ellipse(cx, topY + cakeHeight, rx, ry, 0, Math.PI, a2, true);
+          ctx.closePath();
+          ctx.fillStyle = sideGrad;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.ellipse(cx, topY, rx, ry, 0, 0, a1, false);
+          ctx.lineTo(p1x, p1y + cakeHeight);
+          ctx.ellipse(cx, topY + cakeHeight, rx, ry, 0, a1, 0, true);
+          ctx.closePath();
+          ctx.fillStyle = sideGrad;
+          ctx.fill();
+
+          ctx.strokeStyle = "#fde68a";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.ellipse(cx, topY + cakeHeight - 1.5, rx, ry, 0, a2, Math.PI - 0.03, false);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.ellipse(cx, topY + cakeHeight - 1.5, rx, ry, 0, 0.03, a1, false);
+          ctx.stroke();
+        }
+
+        const topTex = isCut ? cakeState.offscreenTopCut : cakeState.offscreenTopWhole;
+        if (topTex) {
+          ctx.save();
+          ctx.translate(cx, topY);
+          ctx.scale(1, ry / rx);
+          ctx.drawImage(topTex, -rx * 1.18, -rx * 1.18, rx * 2.36, rx * 2.36);
+          ctx.restore();
+        }
+
+        const candleAngles = [-2.08, -1.57, -1.06];
+        candleAngles.forEach((ang, idx) => {
+          const kx = cx + Math.cos(ang) * (rx * 0.72);
+          const ky = topY + Math.sin(ang) * (ry * 0.72);
+          const cH = idx === 1 ? 34 : 29;
+          const cW = 6;
+
+          ctx.beginPath();
+          ctx.ellipse(kx + 3, ky + 1, 5.5, 2.2, 0.2, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(136, 19, 55, 0.25)";
+          ctx.fill();
+
+          const waxGrad = ctx.createLinearGradient(kx - cW / 2, ky - cH, kx + cW / 2, ky);
+          waxGrad.addColorStop(0, "#ffffff");
+          waxGrad.addColorStop(0.6, "#fff1f2");
+          waxGrad.addColorStop(1, "#fecdd3");
+          ctx.fillStyle = waxGrad;
+          ctx.beginPath();
+          ctx.roundRect(kx - cW / 2, ky - cH, cW, cH, 2.5);
+          ctx.fill();
+
+          ctx.strokeStyle = "#d97706";
+          ctx.lineWidth = 1.4;
+          for (let s = 6; s < cH - 4; s += 8) {
+            ctx.beginPath();
+            ctx.moveTo(kx - cW / 2, ky - s);
+            ctx.lineTo(kx + cW / 2, ky - s - 4);
+            ctx.stroke();
+          }
+
+          ctx.strokeStyle = "#1f1116";
+          ctx.lineWidth = 1.3;
+          ctx.beginPath();
+          ctx.moveTo(kx, ky - cH);
+          ctx.lineTo(kx, ky - cH - 5);
+          ctx.stroke();
+
+          if (cakeState.flameScale > 0.02) {
+            const flicker = Math.sin(now * 0.014 + idx * 1.9) * 1.4;
+            const fs = cakeState.flameScale;
+            const fx = kx + flicker * 0.4;
+            const fy = ky - cH - 12;
+
+            const halo = ctx.createRadialGradient(fx, fy, 1, fx, fy, 22 * fs);
+            halo.addColorStop(0, "rgba(254, 240, 138, 0.65)");
+            halo.addColorStop(0.5, "rgba(251, 146, 60, 0.22)");
+            halo.addColorStop(1, "rgba(251, 146, 60, 0)");
+            ctx.fillStyle = halo;
+            ctx.beginPath();
+            ctx.arc(fx, fy, 22 * fs, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.save();
+            ctx.translate(fx, ky - cH - 5);
+            ctx.scale(fs, fs);
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.bezierCurveTo(-5, -5, -4, -12, flicker * 0.6, -17);
+            ctx.bezierCurveTo(4, -12, 5, -5, 0, 0);
+            ctx.fillStyle = "#f97316";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(0, -1);
+            ctx.bezierCurveTo(-2.4, -4, -1.8, -8.5, flicker * 0.3, -11.5);
+            ctx.bezierCurveTo(1.8, -8.5, 2.4, -4, 0, -1);
+            ctx.fillStyle = "#fef9c3";
+            ctx.fill();
+            ctx.restore();
+          } else {
+            if (cakeState.emberGlow > 0.02) {
+              ctx.beginPath();
+              ctx.arc(kx, ky - cH - 5, 2.4 * cakeState.emberGlow, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(251, 146, 60, ${cakeState.emberGlow})`;
+              ctx.fill();
+            }
+            if (cakeState.smokeProgress > 0 && cakeState.smokeProgress < 1) {
+              const sp = cakeState.smokeProgress;
+              const alpha = Math.sin(sp * Math.PI) * 0.72;
+              ctx.strokeStyle = `rgba(241, 245, 249, ${alpha})`;
+              ctx.lineWidth = 1.8;
+              ctx.beginPath();
+              const startY = ky - cH - 6 - sp * 30;
+              ctx.moveTo(kx, startY + 14);
+              ctx.bezierCurveTo(
+                kx - 7 * Math.sin(sp * 7 + idx),
+                startY + 7,
+                kx + 7 * Math.cos(sp * 7 + idx),
+                startY + 2,
+                kx + Math.sin(sp * 5 + idx) * 5,
+                startY - 7
+              );
+              ctx.stroke();
+            }
+          }
+        });
+
+        if (isCut) {
+          const t = cakeState.sliceOut;
+          const slideEase = 1 - Math.pow(1 - t, 3);
+          const liftArc = Math.sin(t * Math.PI) * 14;
+
+          const plateCenterX = cx + rx * 1.18;
+          const plateCenterY = topY + cakeHeight + 48;
+
+          const pAlpha = Math.min(1, slideEase * 1.6);
+          ctx.save();
+          ctx.globalAlpha = pAlpha;
+
+          ctx.beginPath();
+          ctx.ellipse(plateCenterX, plateCenterY + 5, 62, 20, -0.06, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(0, 0, 0, 0.65)";
+          ctx.fill();
+
+          const miniPlateGrad = ctx.createLinearGradient(plateCenterX - 60, plateCenterY - 18, plateCenterX + 60, plateCenterY + 18);
+          miniPlateGrad.addColorStop(0, "#b45309");
+          miniPlateGrad.addColorStop(0.35, "#fef3c7");
+          miniPlateGrad.addColorStop(0.7, "#f59e0b");
+          miniPlateGrad.addColorStop(1, "#78350f");
+
+          ctx.beginPath();
+          ctx.ellipse(plateCenterX, plateCenterY, 60, 19, -0.06, 0, Math.PI * 2);
+          ctx.fillStyle = miniPlateGrad;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.ellipse(plateCenterX, plateCenterY - 1.5, 55, 16.5, -0.06, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff";
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.ellipse(plateCenterX, plateCenterY - 1.5, 46, 13.5, -0.06, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(217, 119, 6, 0.38)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.restore();
+
+          const wedgeCenterOffsetX = Math.cos(midAng) * (rx * 0.56);
+          const wedgeCenterOffsetY = Math.sin(midAng) * (ry * 0.56);
+          const destTipX = plateCenterX - wedgeCenterOffsetX;
+          const destTipY = plateCenterY - cakeHeight - wedgeCenterOffsetY - 2;
+
+          const sx = cx + (destTipX - cx) * slideEase;
+          const sy = topY + (destTipY - topY) * slideEase - liftArc;
+
+          const sp1x = sx + Math.cos(a1) * rx;
+          const sp1y = sy + Math.sin(a1) * ry;
+          const sp2x = sx + Math.cos(a2) * rx;
+          const sp2y = sy + Math.sin(a2) * ry;
+
+          ctx.save();
+          ctx.globalAlpha = Math.max(0.15, slideEase * 0.45);
+          ctx.beginPath();
+          ctx.moveTo(sx, sy + cakeHeight + liftArc + 2);
+          ctx.lineTo(sp1x, sp1y + cakeHeight + liftArc + 2);
+          ctx.lineTo(sp2x, sp2y + cakeHeight + liftArc + 2);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(35, 5, 14, 0.65)";
+          ctx.fill();
+          ctx.restore();
+
+          drawCrossSectionWall(sx, sy, sp1x, sp1y, cakeHeight, -1);
+
+          ctx.beginPath();
+          ctx.ellipse(sx, sy, rx, ry, 0, a1, a2, false);
+          ctx.lineTo(sp2x, sp2y + cakeHeight);
+          ctx.ellipse(sx, sy + cakeHeight, rx, ry, 0, a2, a1, true);
+          ctx.closePath();
+          ctx.fillStyle = "#be123c";
+          ctx.fill();
+
+          ctx.strokeStyle = "#fde68a";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.ellipse(sx, sy + cakeHeight - 1.5, rx, ry, 0, a1, a2, false);
+          ctx.stroke();
+
+          drawCrossSectionWall(sx, sy, sp2x, sp2y, cakeHeight, 1);
+
+          if (cakeState.offscreenSliceTop) {
+            ctx.save();
+            ctx.translate(sx, sy);
+            ctx.scale(1, ry / rx);
+            ctx.drawImage(cakeState.offscreenSliceTop, -rx * 1.18, -rx * 1.18, rx * 2.36, rx * 2.36);
+            ctx.restore();
+          }
+        }
+
+        if (cakeState.phase === "slicing") {
+          const kp = cakeState.knifeProgress;
+          const activeAng = kp < 1 ? a1 : a2;
+          const subP = kp < 1 ? kp : kp - 1;
+          const plunge = Math.sin(subP * Math.PI);
+
+          const targetX = cx + Math.cos(activeAng) * (rx * 0.56);
+          const targetY = topY + Math.sin(activeAng) * (ry * 0.56) - 20 + plunge * 36;
+
+          if (plunge > 0.45 && Math.random() > 0.35) {
+            spawnBladeSparkles(targetX - 18, targetY + 12, 2);
+          }
+
+          ctx.save();
+          ctx.translate(targetX, targetY);
+          ctx.rotate(-0.4 + plunge * 0.22);
+
+          const bladeG = ctx.createLinearGradient(-96, -8, 12, 12);
+          bladeG.addColorStop(0, "#ffffff");
+          bladeG.addColorStop(0.5, "#e2e8f0");
+          bladeG.addColorStop(1, "#64748b");
+          ctx.fillStyle = bladeG;
+          ctx.beginPath();
+          ctx.moveTo(-98, 4);
+          ctx.quadraticCurveTo(-48, 13, 12, 5);
+          ctx.lineTo(12, -5);
+          ctx.lineTo(-82, -5);
+          ctx.quadraticCurveTo(-95, -4, -98, 4);
+          ctx.fill();
+
+          ctx.fillStyle = "#fb7185";
+          ctx.fillRect(12, -6, 8, 13);
+          ctx.fillStyle = "#881337";
+          ctx.beginPath();
+          ctx.roundRect(20, -5, 48, 11, 5);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        for (let i = cakeState.sparkles.length - 1; i >= 0; i--) {
+          const sp = cakeState.sparkles[i];
+          ctx.save();
+          ctx.globalAlpha = sp.alpha;
+          ctx.fillStyle = sp.color;
+          ctx.beginPath();
+          ctx.arc(sp.x, sp.y, sp.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      function startLuxuryCakeRender() {
+        resizeCakeCanvas();
+        if (cakeState.animId) cancelAnimationFrame(cakeState.animId);
+
+        let lastTime = performance.now();
+        function loop(now) {
+          const dt = Math.min(0.05, (now - lastTime) / 1000);
+          lastTime = now;
+
+          for (let i = cakeState.sparkles.length - 1; i >= 0; i--) {
+            const sp = cakeState.sparkles[i];
+            sp.x += sp.vx * dt;
+            sp.y += sp.vy * dt;
+            sp.vy += 45 * dt;
+            sp.alpha -= dt * 1.15;
+            if (sp.alpha <= 0) cakeState.sparkles.splice(i, 1);
+          }
+
+          if (cakeState.phase === "blowing") {
+            cakeState.flameScale = Math.max(0, cakeState.flameScale - dt / 0.35);
+            cakeState.emberGlow = Math.max(0, 1 - cakeState.smokeProgress * 1.2);
+            cakeState.smokeProgress = Math.min(1, cakeState.smokeProgress + dt / 0.85);
+            if (cakeState.flameScale === 0 && cakeState.smokeProgress >= 0.45) {
+              cakeState.phase = "slicing";
+              playNote(["E5", "G5", "B5"], "8n");
+            }
+          } else if (cakeState.phase === "slicing") {
+            cakeState.smokeProgress = Math.min(1, cakeState.smokeProgress + dt * 0.75);
+            cakeState.emberGlow = Math.max(0, cakeState.emberGlow - dt * 1.8);
+            cakeState.knifeProgress += dt / 0.35;
+            if (cakeState.knifeProgress >= 2) {
+              cakeState.knifeProgress = 2;
+              cakeState.phase = "separating";
+              playNote(["C5", "E5", "G5", "C6"], "4n");
+              launchCelebrationConfetti();
+            }
+          } else if (cakeState.phase === "separating") {
+            cakeState.sliceOut = Math.min(1, cakeState.sliceOut + dt / 0.95);
+            if (cakeState.sliceOut >= 1) {
+              cakeState.phase = "done";
+              const dpr = Math.min(window.devicePixelRatio || 1, 2);
+              const W = cakeCanvas.width / dpr;
+              const H = cakeCanvas.height / dpr;
+              spawnBladeSparkles(W * 0.72, H * 0.62, 22);
+              revealAfterCakeContinue();
+            }
+          }
+
+          if (currentScreen === 5) {
+            renderLuxuryCakeFrame(now);
+          }
+          cakeState.animId = requestAnimationFrame(loop);
+        }
+        cakeState.animId = requestAnimationFrame(loop);
+      }
+
+      window.addEventListener("resize", () => {
+        if (currentScreen === 5) resizeCakeCanvas();
+      });
+
+      function goToMemoriesFromCake() {
+        playNote(["D5", "A5"], "8n");
+        render3DCoverflow();
+        goToScreen(6);
+      }
+
+      function revealAfterCakeContinue() {
+        cakeInstructionText.textContent = "Happy Birthday Malkin G! Enjoy your sweet slice 🍰❤️";
+        cutCakeActionBtn.classList.add("hidden");
+        afterCakeNextBtn.classList.remove("hidden");
+        afterCakeNextBtn.style.display = "inline-flex";
+        afterCakeNextBtn.style.alignItems = "center";
+        afterCakeNextBtn.style.justifyContent = "center";
+        afterCakeNextBtn.style.pointerEvents = "auto";
+        if (skipCakeFallbackBtn) skipCakeFallbackBtn.classList.add("hidden");
+      }
+
+      function cutCake() {
+        if (cakeState.phase !== "idle") {
+          if (cakeState.phase === "done") revealAfterCakeContinue();
+          return;
+        }
+        playNote(["G4", "C5"], "16n");
+        cakeInstructionText.textContent = "Making your wish & slicing the cake... ✨";
+        cutCakeActionBtn.disabled = true;
+        cutCakeActionBtn.style.opacity = "0.65";
+        cakeState.phase = "blowing";
+      }
+
+      cutCakeActionBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        cutCake();
+      });
+
+      cakeCeremonyStage.addEventListener("click", (e) => {
+        e.stopPropagation();
+        cutCake();
+      });
+
+      cakeCeremonyStage.addEventListener("touchstart", (e) => {
+        if (e.cancelable) e.preventDefault();
+        cutCake();
+      }, { passive: false });
+
+      cakeCeremonyStage.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          cutCake();
+        }
+      });
+
+      afterCakeNextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        goToMemoriesFromCake();
+      });
+
+      skipCakeFallbackBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        goToMemoriesFromCake();
+      });
+
+      /* -------------------------------------------------------
+         9. SCREEN 6: "SPECIAL MEMORIES" 3D COVERFLOW GALLERY (All 10 Numbered Items)
+            (60fps Real-Time Drag & Spring-Damper Inertia Physics)
+      -------------------------------------------------------- */
+      const coverflowStage = document.getElementById("coverflowStage");
+      const carouselDots = document.getElementById("carouselDots");
+
+      let cfCardEls = [];
+      let cfDotEls = [];
+      let cfFloat = 0;
+      let cfVelocity = 0;
+      let cfTargetIndex = 0;
+      let cfIsDragging = false;
+      let cfDragStartX = 0;
+      let cfDragStartFloat = 0;
+      let cfDragTravel = 0;
+      let cfLastMoveX = 0;
+      let cfLastMoveTime = 0;
+      let cfAnimId = null;
+      let cfLastFrameTime = 0;
+      let cfLastActiveDot = -1;
+      let cfWheelTimeout = null;
+
+      function wrapCoverflowFloat(val, total) {
+        return ((val % total) + total) % total;
+      }
+
+      function shortestWrappedOffset(idx, floatPos, total) {
+        let offset = idx - floatPos;
+        const half = total / 2;
+        while (offset > half) offset -= total;
+        while (offset < -half) offset += total;
+        return offset;
+      }
+
+      function applyCoverflowTransforms() {
+        const total = cfCardEls.length;
+        if (!total) return;
+
+        const isMobile = window.innerWidth < 640;
+        const spread1X = isMobile ? 148 : 198;
+        const spread2X = isMobile ? 242 : 330;
+
+        for (let idx = 0; idx < total; idx++) {
+          const card = cfCardEls[idx];
+          const offset = shortestWrappedOffset(idx, cfFloat, total);
+          const absOff = Math.abs(offset);
+
+          if (absOff > 2.65) {
+            card.style.opacity = "0";
+            card.style.transform = "translate3d(0px, 24px, -220px) rotateY(0deg) scale(0.6)";
+            card.style.zIndex = "1";
+            card.style.pointerEvents = "none";
+            continue;
+          }
+
+          card.style.pointerEvents = "auto";
+
+          let tx = 0;
+          let ty = 0;
+          let tz = 0;
+          let ry = 0;
+          let sc = 1;
+          let op = 1;
+
+          if (absOff <= 1) {
+            const t = absOff;
+            const dir = offset >= 0 ? 1 : -1;
+            tx = dir * spread1X * t;
+            ty = 8 * t;
+            tz = 50 - 115 * t;
+            ry = -dir * 30 * t;
+            sc = 1 - 0.16 * t;
+            op = 1 - 0.22 * t;
+          } else if (absOff <= 2) {
+            const t = absOff - 1;
+            const dir = offset >= 0 ? 1 : -1;
+            tx = dir * (spread1X + (spread2X - spread1X) * t);
+            ty = 8 + 8 * t;
+            tz = -65 - 80 * t;
+            ry = -dir * (30 + 12 * t);
+            sc = 0.84 - 0.14 * t;
+            op = 0.78 - 0.43 * t;
+          } else {
+            const t = Math.min(1, (absOff - 2) / 0.65);
+            const dir = offset >= 0 ? 1 : -1;
+            tx = dir * (spread2X + 55 * t);
+            ty = 16 + 8 * t;
+            tz = -145 - 75 * t;
+            ry = -dir * (42 + 6 * t);
+            sc = 0.70 - 0.10 * t;
+            op = Math.max(0, 0.35 * (1 - t));
+          }
+
+          card.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, ${tz.toFixed(2)}px) rotateY(${ry.toFixed(2)}deg) scale(${sc.toFixed(4)})`;
+          card.style.opacity = op.toFixed(3);
+          card.style.zIndex = String(Math.round(30 - absOff * 10));
+
+          const centerGlow = Math.max(0, 1 - absOff * 1.45);
+          if (centerGlow > 0.02) {
+            card.style.borderColor = `rgba(253, 164, 175, ${(0.3 + 0.58 * centerGlow).toFixed(3)})`;
+            card.style.boxShadow = `0 22px 55px rgba(0, 0, 0, 0.9), 0 0 ${(22 + 26 * centerGlow).toFixed(1)}px rgba(244, 63, 94, ${(0.24 + 0.36 * centerGlow).toFixed(3)}), inset 0 0 ${(18 * centerGlow).toFixed(1)}px rgba(255, 182, 193, ${(0.22 * centerGlow).toFixed(3)})`;
+          } else {
+            card.style.borderColor = "rgba(255, 110, 130, 0.3)";
+            card.style.boxShadow = "0 18px 40px rgba(0, 0, 0, 0.85), 0 0 22px rgba(185, 24, 48, 0.25)";
+          }
+        }
+
+        const nearestIdx = ((Math.round(cfFloat) % total) + total) % total;
+        if (nearestIdx !== cfLastActiveDot) {
+          cfLastActiveDot = nearestIdx;
+          cfDotEls.forEach((dot, dIdx) => {
+            if (dIdx === nearestIdx) {
+              dot.className = "h-1.5 rounded-full transition-all duration-300 cursor-pointer w-6 bg-rose-400 shadow-[0_0_8px_#fb7185]";
+            } else {
+              dot.className = "h-1.5 rounded-full transition-all duration-300 cursor-pointer w-1.5 bg-rose-200/30";
+            }
+          });
+        }
+      }
+
+      function startCoverflowPhysicsLoop() {
+        if (cfAnimId) cancelAnimationFrame(cfAnimId);
+        cfLastFrameTime = performance.now();
+
+        function step(now) {
+          cfAnimId = requestAnimationFrame(step);
+          if (currentScreen !== 6 || !cfCardEls.length) {
+            cfLastFrameTime = now;
+            return;
+          }
+
+          const dt = Math.min(0.033, Math.max(0.001, (now - cfLastFrameTime) / 1000));
+          cfLastFrameTime = now;
+          const total = cfCardEls.length;
+
+          if (!cfIsDragging) {
+            let disp = cfTargetIndex - cfFloat;
+            const half = total / 2;
+            while (disp > half) disp -= total;
+            while (disp < -half) disp += total;
+
+            const stiffness = 175;
+            const damping = 23;
+            const accel = disp * stiffness - cfVelocity * damping;
+
+            cfVelocity += accel * dt;
+            cfFloat = wrapCoverflowFloat(cfFloat + cfVelocity * dt, total);
+
+            if (Math.abs(disp) < 0.0008 && Math.abs(cfVelocity) < 0.004) {
+              cfFloat = ((cfTargetIndex % total) + total) % total;
+              cfVelocity = 0;
+            }
+          }
+
+          applyCoverflowTransforms();
+        }
+
+        cfAnimId = requestAnimationFrame(step);
+      }
+
+      function render3DCoverflow() {
+        coverflowStage.innerHTML = "";
+        carouselDots.innerHTML = "";
+        cfCardEls = [];
+        cfDotEls = [];
+        cfLastActiveDot = -1;
+
+        // Render all numbered items in exact order
+        const coverflowItems = mediaItems;
+        const total = coverflowItems.length;
+        if (!total) return;
+
+        if (activePhotoIndex >= total) activePhotoIndex = 0;
+        cfFloat = activePhotoIndex;
+        cfTargetIndex = activePhotoIndex;
+        cfVelocity = 0;
+
+        coverflowItems.forEach((item, idx) => {
+          const card = document.createElement("div");
+          card.className = "memory-3d-card cursor-pointer";
+
+          const fallbackPoster = item.poster || "Malkin g.jpeg";
+          const mediaHtml = item.type === "video"
+            ? `<div class="relative w-full h-full">
+                 <video src="${item.url}" poster="${fallbackPoster}" autoplay loop muted playsinline class="w-full h-full object-cover pointer-events-none" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"></video>
+                 <img src="${fallbackPoster}" alt="${item.caption}" style="display:none;" class="w-full h-full object-cover pointer-events-none" onerror="this.onerror=null;this.src='https://placehold.co/400x540/3b0d18/fecdd3?text=${encodeURIComponent(item.caption)}';">
+                 <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-black/65 border border-rose-400/45 text-rose-100 backdrop-blur-sm pointer-events-none">🎬 VIDEO</span>
+               </div>`
+            : `<img src="${item.url}" alt="${item.caption}" class="w-full h-full object-cover pointer-events-none" onerror="this.onerror=null;this.src='https://placehold.co/400x540/3b0d18/fecdd3?text=${encodeURIComponent(item.caption)}';">`;
+
+          card.innerHTML = `
+            ${mediaHtml}
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent p-3.5 text-left pointer-events-none">
+              <p class="font-serif-display italic text-xs sm:text-sm text-rose-100 drop-shadow">${item.caption}</p>
+            </div>
+          `;
+
+          card.addEventListener("click", () => {
+            if (cfDragTravel > 8) return;
+            const offset = shortestWrappedOffset(idx, cfFloat, total);
+            if (Math.abs(offset) > 0.15) {
+              cfTargetIndex = idx;
+              activePhotoIndex = idx;
+              playNote("E5", "32n");
+            }
+          });
+
+          coverflowStage.appendChild(card);
+          cfCardEls.push(card);
+
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "h-1.5 rounded-full transition-all duration-300 cursor-pointer w-1.5 bg-rose-200/30";
+          dot.addEventListener("click", () => {
+            cfTargetIndex = idx;
+            activePhotoIndex = idx;
+            playNote("E5", "32n");
+          });
+          carouselDots.appendChild(dot);
+          cfDotEls.push(dot);
+        });
+
+        applyCoverflowTransforms();
+        startCoverflowPhysicsLoop();
+      }
+
+      function rotateCoverflow(step) {
+        const total = cfCardEls.length || mediaItems.length;
+        if (!total) return;
+        cfTargetIndex = ((cfTargetIndex + step) % total + total) % total;
+        activePhotoIndex = cfTargetIndex;
+        playNote(step > 0 ? "F5" : "D5", "32n");
+      }
+
+      function getDragPxPerCard() {
+        return window.innerWidth < 640 ? 155 : 210;
+      }
+
+      function beginCoverflowDrag(clientX) {
+        if (!cfCardEls.length) return;
+        cfIsDragging = true;
+        cfDragStartX = clientX;
+        cfDragStartFloat = cfFloat;
+        cfDragTravel = 0;
+        cfVelocity = 0;
+        cfLastMoveX = clientX;
+        cfLastMoveTime = performance.now();
+      }
+
+      function updateCoverflowDrag(clientX) {
+        if (!cfIsDragging || !cfCardEls.length) return;
+        const now = performance.now();
+        const total = cfCardEls.length;
+        const pxPerCard = getDragPxPerCard();
+
+        const dxTotal = clientX - cfDragStartX;
+        cfDragTravel = Math.max(cfDragTravel, Math.abs(dxTotal));
+
+        cfFloat = wrapCoverflowFloat(cfDragStartFloat - dxTotal / pxPerCard, total);
+
+        const dt = Math.max(0.004, (now - cfLastMoveTime) / 1000);
+        const instVel = -((clientX - cfLastMoveX) / pxPerCard) / dt;
+        cfVelocity = cfVelocity * 0.45 + instVel * 0.55;
+
+        cfLastMoveX = clientX;
+        cfLastMoveTime = now;
+      }
+
+      function endCoverflowDrag() {
+        if (!cfIsDragging) return;
+        cfIsDragging = false;
+        const total = cfCardEls.length;
+        if (!total) return;
+
+        const clampedVel = Math.max(-7, Math.min(7, cfVelocity));
+        const projectedFloat = cfFloat + clampedVel * 0.16;
+        const snapped = Math.round(projectedFloat);
+        cfTargetIndex = ((snapped % total) + total) % total;
+        activePhotoIndex = cfTargetIndex;
+
+        if (cfDragTravel > 12) {
+          playNote(clampedVel >= 0 ? "F5" : "D5", "32n");
+        }
+      }
+
+      coverflowStage.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1) {
+          beginCoverflowDrag(e.touches[0].clientX);
+        }
+      }, { passive: true });
+
+      coverflowStage.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 1 && cfIsDragging) {
+          updateCoverflowDrag(e.touches[0].clientX);
+        }
+      }, { passive: true });
+
+      coverflowStage.addEventListener("touchend", () => {
+        endCoverflowDrag();
+      });
+
+      coverflowStage.addEventListener("touchcancel", () => {
+        endCoverflowDrag();
+      });
+
+      coverflowStage.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        beginCoverflowDrag(e.clientX);
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (cfIsDragging && currentScreen === 6) {
+          updateCoverflowDrag(e.clientX);
+        }
+      });
+
+      window.addEventListener("mouseup", () => {
+        if (cfIsDragging) {
+          endCoverflowDrag();
+        }
+      });
+
+      coverflowStage.addEventListener("wheel", (e) => {
+        if (currentScreen !== 6 || !cfCardEls.length) return;
+        const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        if (Math.abs(delta) < 2) return;
+        e.preventDefault();
+
+        const total = cfCardEls.length;
+        cfFloat = wrapCoverflowFloat(cfFloat + delta * 0.0022, total);
+        cfVelocity = delta * 0.012;
+
+        clearTimeout(cfWheelTimeout);
+        cfWheelTimeout = setTimeout(() => {
+          const snapped = Math.round(cfFloat);
+          cfTargetIndex = ((snapped % total) + total) % total;
+          activePhotoIndex = cfTargetIndex;
+        }, 90);
+      }, { passive: false });
+
+      window.addEventListener("resize", () => {
+        if (currentScreen === 6) applyCoverflowTransforms();
+      });
+
+      document.getElementById("toLetterBtn").addEventListener("click", () => {
+        playNote(["E5", "B5"], "8n");
+        goToScreen(7);
+      });
+
+      /* -------------------------------------------------------
+         10. SCREEN 7: 3D ENVELOPE, TYPEWRITER LETTER & CELEBRATION
+      -------------------------------------------------------- */
+      const envelope3dCard = document.getElementById("envelope3dCard");
+      const envelopeStage = document.getElementById("envelopeStage");
+      const letterStage = document.getElementById("letterStage");
+
+      envelope3dCard.addEventListener("mousemove", (e) => {
+        const rect = envelope3dCard.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        envelope3dCard.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale(1.02)`;
+      });
+
+      envelope3dCard.addEventListener("mouseleave", () => {
+        envelope3dCard.style.transform = "rotateY(0deg) rotateX(0deg) scale(1)";
+      });
+
+      envelope3dCard.addEventListener("click", () => {
+        playNote(["C5", "E5", "G5", "B5", "D6"], "4n");
+        envelope3dCard.classList.add("opening");
+        document.getElementById("sealLabel").textContent = "OPENING LETTER...";
+
+        setTimeout(() => {
+          envelopeStage.style.opacity = "0";
+          envelopeStage.style.transform = "scale(0.92)";
+          setTimeout(() => {
+            envelopeStage.classList.add("hidden");
+            letterStage.classList.remove("hidden");
+            letterStage.classList.add("flex");
+            requestAnimationFrame(() => {
+              letterStage.style.opacity = "1";
+              letterStage.style.transform = "scale(1)";
+              startTypewriter();
+            });
+          }, 300);
+        }, 520);
+      });
+
+      function startTypewriter() {
+        const target = document.getElementById("typedLetterText");
+        const container = document.getElementById("letterTextContainer");
+        target.textContent = "";
+        let i = 0;
+        if (typewriterTimer) clearInterval(typewriterTimer);
+
+        typewriterTimer = setInterval(() => {
+          if (i < loveLetterMessage.length) {
+            target.textContent += loveLetterMessage.charAt(i);
+            i++;
+            container.scrollTop = container.scrollHeight;
+          } else {
+            clearInterval(typewriterTimer);
+          }
+        }, 28);
+      }
+
+      /* -------------------------------------------------------
+         11. FULLSCREEN 3D CONFETTI & ROSE-PETAL CELEBRATION BURST
+      -------------------------------------------------------- */
+      const canvas = document.getElementById("confettiCanvas");
+      const ctx = canvas.getContext("2d");
+      let confettiPieces = [];
+      let confettiAnimId = null;
+
+      function resizeConfetti() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeConfetti);
+      resizeConfetti();
+
+      function launchCelebrationConfetti() {
+        const colors = ["#ffffff", "#ffe4e6", "#fda4af", "#fb7185", "#f43f5e", "#e11d48", "#fde68a"];
+        for (let i = 0; i < 165; i++) {
+          const isPetal = Math.random() > 0.55;
+          confettiPieces.push({
+            x: Math.random() * canvas.width,
+            y: -20 - Math.random() * canvas.height * 0.45,
+            w: isPetal ? (8 + Math.random() * 6) : (5 + Math.random() * 6),
+            h: isPetal ? (11 + Math.random() * 6) : (8 + Math.random() * 9),
+            color: colors[Math.floor(Math.random() * colors.length)],
+            vx: (Math.random() - 0.5) * 3.8,
+            vy: 2.6 + Math.random() * 4.4,
+            rot: Math.random() * Math.PI * 2,
+            vRot: (Math.random() - 0.5) * 0.14,
+            flip: Math.random() * Math.PI,
+            vFlip: 0.06 + Math.random() * 0.1,
+            swayPhase: Math.random() * Math.PI * 2,
+            isPetal
+          });
+        }
+        if (!confettiAnimId) animateConfetti();
+      }
+
+      function animateConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confettiPieces.forEach((p, idx) => {
+          p.swayPhase += 0.045;
+          p.x += p.vx + Math.sin(p.swayPhase) * 1.1;
+          p.y += p.vy;
+          p.rot += p.vRot;
+          p.flip += p.vFlip;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.scale(1, Math.cos(p.flip));
+          ctx.fillStyle = p.color;
+
+          if (p.isPetal) {
+            ctx.beginPath();
+            ctx.moveTo(0, -p.h / 2);
+            ctx.bezierCurveTo(p.w / 2, -p.h / 2, p.w / 2, p.h / 2, 0, p.h / 2);
+            ctx.bezierCurveTo(-p.w / 2, p.h / 2, -p.w / 2, -p.h / 2, 0, -p.h / 2);
+            ctx.fill();
+          } else {
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          }
+          ctx.restore();
+
+          if (p.y > canvas.height + 30) {
+            confettiPieces.splice(idx, 1);
+          }
+        });
+
+        if (confettiPieces.length > 0) {
+          confettiAnimId = requestAnimationFrame(animateConfetti);
+        } else {
+          confettiAnimId = null;
+        }
+      }
+
+      document.getElementById("celebrateBtn").addEventListener("click", () => {
+        playNote(["C5", "E5", "G5", "C6"], "2n");
+        launchCelebrationConfetti();
+
+        const btn = document.getElementById("celebrateBtn");
+        btn.disabled = true;
+        btn.textContent = "✨ CELEBRATING... ✨";
+
+        setTimeout(() => {
+          enterThreeCosmicUniverse();
+        }, 3000);
+      });
+
+      /* -------------------------------------------------------
+         12. SCREEN 8 (ONLY AT VERY END): THREE.JS 3D COSMIC STARFIELD POLAROID UNIVERSE
+      -------------------------------------------------------- */
+      const threeContainer = document.getElementById("threeCosmicContainer");
+      let scene, camera, renderer, starPoints, polaroidGroup;
+      let polaroidMeshes = [];
+      let raycaster, pointerNDC;
+      let hoveredMesh = null;
+      let threeInitialized = false;
+      let threeAnimId = null;
+      let activeLightboxIndex = -1;
+
+      let targetCameraZ = 18;
+      const MIN_CAMERA_Z = 5;
+      const MAX_CAMERA_Z = 38;
+      let targetYaw = 0;
+      let targetPitch = 0;
+      let currentYaw = 0;
+      let currentPitch = 0;
+
+      function createPolaroidCardTexture(item) {
+        const canvasTex = document.createElement("canvas");
+        canvasTex.width = 512;
+        canvasTex.height = 640;
+        const c = canvasTex.getContext("2d");
+
+        const texture = new THREE.CanvasTexture(canvasTex);
+        texture.anisotropy = 4;
+
+        function drawCardFrame(mediaSource, isHoveredGlow = false) {
+          c.clearRect(0, 0, 512, 640);
+
+          const r = 28;
+          c.save();
+          c.beginPath();
+          c.moveTo(r, 0);
+          c.lineTo(512 - r, 0);
+          c.quadraticCurveTo(512, 0, 512, r);
+          c.lineTo(512, 640 - r);
+          c.quadraticCurveTo(512, 640, 512 - r, 640);
+          c.lineTo(r, 640);
+          c.quadraticCurveTo(0, 640, 0, 640 - r);
+          c.lineTo(0, r);
+          c.quadraticCurveTo(0, 0, r, 0);
+          c.closePath();
+          c.fillStyle = "#1c1e24";
+          c.fill();
+
+          c.lineWidth = isHoveredGlow ? 8 : 3;
+          c.strokeStyle = isHoveredGlow ? "#22d3ee" : "rgba(255, 255, 255, 0.14)";
+          c.stroke();
+          c.restore();
+
+          const pad = 22;
+          const imgW = 512 - pad * 2;
+          const imgH = 524;
+          const ir = 16;
+
+          c.save();
+          c.beginPath();
+          c.moveTo(pad + ir, pad);
+          c.lineTo(pad + imgW - ir, pad);
+          c.quadraticCurveTo(pad + imgW, pad, pad + imgW, pad + ir);
+          c.lineTo(pad + imgW, pad + imgH - ir);
+          c.quadraticCurveTo(pad + imgW, pad + imgH, pad + imgW - ir, pad + imgH);
+          c.lineTo(pad + ir, pad + imgH);
+          c.quadraticCurveTo(pad, pad + imgH, pad, pad + imgH - ir);
+          c.lineTo(pad, pad + ir);
+          c.quadraticCurveTo(pad, pad, pad + ir, pad);
+          c.closePath();
+          c.clip();
+
+          c.fillStyle = "#0b0d11";
+          c.fillRect(pad, pad, imgW, imgH);
+
+          if (mediaSource) {
+            const sw = mediaSource.videoWidth || mediaSource.naturalWidth || mediaSource.width;
+            const sh = mediaSource.videoHeight || mediaSource.naturalHeight || mediaSource.height;
+            if (sw && sh) {
+              const scale = Math.max(imgW / sw, imgH / sh);
+              const dw = sw * scale;
+              const dh = sh * scale;
+              const dx = pad + (imgW - dw) / 2;
+              const dy = pad + (imgH - dh) / 2;
+              c.drawImage(mediaSource, dx, dy, dw, dh);
+            }
+          }
+
+          if (item.type === "video") {
+            c.fillStyle = "rgba(0, 0, 0, 0.55)";
+            c.beginPath();
+            c.arc(256, pad + imgH / 2, 34, 0, Math.PI * 2);
+            c.fill();
+            c.fillStyle = "#22d3ee";
+            c.beginPath();
+            c.moveTo(247, pad + imgH / 2 - 14);
+            c.lineTo(271, pad + imgH / 2);
+            c.lineTo(247, pad + imgH / 2 + 14);
+            c.closePath();
+            c.fill();
+          }
+
+          c.restore();
+
+          c.fillStyle = "#f8fafc";
+          c.font = "600 28px 'Plus Jakarta Sans', sans-serif";
+          c.textAlign = "center";
+          c.textBaseline = "middle";
+          c.fillText(item.caption || "1. Malkin g 😶", 256, 594);
+
+          texture.needsUpdate = true;
+        }
+
+        drawCardFrame(null, false);
+
+        if (item.type === "video") {
+          // Load fallback poster image first so Polaroid always has a crisp thumbnail even before video decodes
+          const fallbackImg = new Image();
+          fallbackImg.crossOrigin = "anonymous";
+          fallbackImg.onload = () => drawCardFrame(fallbackImg, false);
+          fallbackImg.src = item.poster || "Malkin g.jpeg";
+
+          const vid = document.createElement("video");
+          vid.src = item.url;
+          vid.crossOrigin = "anonymous";
+          vid.loop = true;
+          vid.muted = true;
+          vid.playsInline = true;
+          vid.play().catch(() => {});
+          return { texture, drawCardFrame, videoEl: vid, imageEl: fallbackImg };
+        } else {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.onload = () => drawCardFrame(img, false);
+          img.onerror = () => {
+            const fallback = new Image();
+            fallback.crossOrigin = "anonymous";
+            fallback.onload = () => drawCardFrame(fallback, false);
+            fallback.src = `https://placehold.co/512x600/1c1e24/94a3b8?text=${encodeURIComponent(item.caption)}`;
+          };
+          img.src = item.url;
+          return { texture, drawCardFrame, videoEl: null, imageEl: img };
+        }
+      }
+
+      function initThreeCosmicUniverse() {
+        if (!threeInitialized) {
+          scene = new THREE.Scene();
+          scene.background = new THREE.Color(0x020206);
+          scene.fog = new THREE.FogExp2(0x020206, 0.014);
+
+          camera = new THREE.PerspectiveCamera(58, window.innerWidth / window.innerHeight, 0.1, 220);
+          camera.position.set(0, 0, targetCameraZ);
+
+          renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          threeContainer.appendChild(renderer.domElement);
+
+          const starCount = 3200;
+          const starGeo = new THREE.BufferGeometry();
+          const starPositions = new Float32Array(starCount * 3);
+          const starColors = new Float32Array(starCount * 3);
+
+          for (let i = 0; i < starCount; i++) {
+            starPositions[i * 3] = (Math.random() - 0.5) * 140;
+            starPositions[i * 3 + 1] = (Math.random() - 0.5) * 110;
+            starPositions[i * 3 + 2] = (Math.random() - 0.5) * 140;
+
+            const isBlueTint = Math.random() > 0.78;
+            starColors[i * 3] = isBlueTint ? 0.72 : 1.0;
+            starColors[i * 3 + 1] = isBlueTint ? 0.92 : 1.0;
+            starColors[i * 3 + 2] = 1.0;
+          }
+
+          starGeo.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
+          starGeo.setAttribute("color", new THREE.BufferAttribute(starColors, 3));
+
+          const starMat = new THREE.PointsMaterial({
+            size: 0.22,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.92
+          });
+
+          starPoints = new THREE.Points(starGeo, starMat);
+          scene.add(starPoints);
+
+          polaroidGroup = new THREE.Group();
+          scene.add(polaroidGroup);
+
+          raycaster = new THREE.Raycaster();
+          pointerNDC = new THREE.Vector2(-99, -99);
+
+          setupThreeCosmicControls();
+          window.addEventListener("resize", onThreeResize);
+          threeInitialized = true;
+        }
+
+        rebuildThreePolaroids();
+      }
+
+      function rebuildThreePolaroids() {
+        if (!polaroidGroup) return;
+        while (polaroidGroup.children.length > 0) {
+          const child = polaroidGroup.children[0];
+          polaroidGroup.remove(child);
+        }
+        polaroidMeshes = [];
+
+        // Place 26 Polaroid cards (2 full passes of all 13 numbered items)
+        const totalCards = Math.max(20, mediaItems.length * 2);
+        const cardGeo = new THREE.PlaneGeometry(3.4, 4.25);
+        const innerHitGeo = new THREE.PlaneGeometry(3.15, 3.55);
+
+        for (let i = 0; i < totalCards; i++) {
+          const mediaIdx = i % mediaItems.length;
+          const item = mediaItems[mediaIdx];
+          const cardAsset = createPolaroidCardTexture(item);
+
+          const mat = new THREE.MeshBasicMaterial({
+            map: cardAsset.texture,
+            transparent: true,
+            side: THREE.DoubleSide
+          });
+
+          const mesh = new THREE.Mesh(cardGeo, mat);
+
+          const innerMat = new THREE.MeshBasicMaterial({
+            transparent: true,
+            opacity: 0,
+            depthWrite: false,
+            side: THREE.DoubleSide
+          });
+          const innerPlane = new THREE.Mesh(innerHitGeo, innerMat);
+          innerPlane.position.set(0, 0.2, 0.01);
+          innerPlane.userData = { parentPolaroid: mesh, mediaIdx };
+          mesh.add(innerPlane);
+
+          const angle = i * 2.39996;
+          const radius = 3.2 + (i % 4) * 3.1 + Math.random() * 1.8;
+          mesh.position.x = Math.cos(angle) * radius * 1.3;
+          mesh.position.y = Math.sin(angle) * radius * 0.85;
+          mesh.position.z = -38 + (i * (52 / totalCards));
+
+          mesh.rotation.x = (Math.random() - 0.5) * 0.22;
+          mesh.rotation.y = (Math.random() - 0.5) * 0.45;
+          mesh.rotation.z = (Math.random() - 0.5) * 0.18;
+
+          mesh.userData = {
+            mediaIdx,
+            cardAsset,
+            baseY: mesh.position.y,
+            phase: Math.random() * Math.PI * 2,
+            rotSpeedY: (Math.random() - 0.5) * 0.004,
+            isHovered: false
+          };
+
+          polaroidGroup.add(mesh);
+          polaroidMeshes.push(mesh);
+        }
+      }
+
+      function onThreeResize() {
+        if (!camera || !renderer) return;
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      function enterThreeCosmicUniverse() {
+        playNote(["E5", "B5", "E6"], "2n");
+        goToScreen(8);
+        initThreeCosmicUniverse();
+        if (!threeAnimId) animateThreeCosmic();
+      }
+
+      function resolveHitPolaroid(hits) {
+        if (!hits || hits.length === 0) return null;
+        const obj = hits[0].object;
+        return obj.userData && obj.userData.parentPolaroid ? obj.userData.parentPolaroid : obj;
+      }
+
+      function animateThreeCosmic() {
+        threeAnimId = requestAnimationFrame(animateThreeCosmic);
+        if (currentScreen !== 8) return;
+
+        camera.position.z += (targetCameraZ - camera.position.z) * 0.08;
+        currentYaw += (targetYaw - currentYaw) * 0.07;
+        currentPitch += (targetPitch - currentPitch) * 0.07;
+
+        polaroidGroup.rotation.y = currentYaw;
+        polaroidGroup.rotation.x = currentPitch;
+        starPoints.rotation.y = currentYaw * 0.65;
+        starPoints.rotation.x = currentPitch * 0.65;
+
+        const starPos = starPoints.geometry.attributes.position.array;
+        for (let i = 2; i < starPos.length; i += 3) {
+          starPos[i] += 0.08;
+          if (starPos[i] > 55) starPos[i] = -85;
+        }
+        starPoints.geometry.attributes.position.needsUpdate = true;
+
+        const isLightboxOpen = document.getElementById("polaroidLightbox").classList.contains("open");
+
+        if (!isLightboxOpen) {
+          raycaster.setFromCamera(pointerNDC, camera);
+          const hits = raycaster.intersectObjects(polaroidMeshes, true);
+          const hitMesh = resolveHitPolaroid(hits);
+
+          if (hoveredMesh !== hitMesh) {
+            if (hoveredMesh) {
+              hoveredMesh.userData.isHovered = false;
+              const a = hoveredMesh.userData.cardAsset;
+              a.drawCardFrame(a.videoEl && a.videoEl.readyState >= 2 ? a.videoEl : a.imageEl, false);
+            }
+            hoveredMesh = hitMesh;
+            if (hoveredMesh) {
+              hoveredMesh.userData.isHovered = true;
+              const a = hoveredMesh.userData.cardAsset;
+              a.drawCardFrame(a.videoEl && a.videoEl.readyState >= 2 ? a.videoEl : a.imageEl, true);
+              threeContainer.style.cursor = "pointer";
+            } else {
+              threeContainer.style.cursor = "grab";
+            }
+          }
+        }
+
+        polaroidMeshes.forEach((mesh) => {
+          const d = mesh.userData;
+          if (d.cardAsset.videoEl && d.cardAsset.videoEl.readyState >= 2) {
+            d.cardAsset.drawCardFrame(d.cardAsset.videoEl, d.isHovered);
+          }
+
+          if (!isLightboxOpen) {
+            const speed = d.isHovered ? 0.008 : 0.042;
+            mesh.position.z += speed;
+            mesh.rotation.y += d.rotSpeedY;
+            d.phase += 0.015;
+            mesh.position.y = d.baseY + Math.sin(d.phase) * 0.16;
+
+            if (mesh.position.z > camera.position.z + 6) {
+              mesh.position.z = -38;
+            }
+          }
+        });
+
+        renderer.render(scene, camera);
+      }
+
+      function setupThreeCosmicControls() {
+        let dragging = false;
+        let downX = 0;
+        let downY = 0;
+        let lastX = 0;
+        let lastY = 0;
+        let pinchStartDist = null;
+        let pinchStartZ = targetCameraZ;
+        const CLICK_DISTANCE_THRESHOLD = 8;
+
+        document.getElementById("cosmicZoomInBtn").addEventListener("click", (e) => {
+          e.stopPropagation();
+          targetCameraZ = Math.max(MIN_CAMERA_Z, targetCameraZ - 4.5);
+          playNote("E5", "32n");
+        });
+
+        document.getElementById("cosmicZoomOutBtn").addEventListener("click", (e) => {
+          e.stopPropagation();
+          targetCameraZ = Math.min(MAX_CAMERA_Z, targetCameraZ + 4.5);
+          playNote("C5", "32n");
+        });
+
+        function tryOpenPolaroidAtClientPoint(clientX, clientY) {
+          if (document.getElementById("polaroidLightbox").classList.contains("open")) return;
+          const rect = renderer.domElement.getBoundingClientRect();
+          pointerNDC.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+          pointerNDC.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+          camera.updateMatrixWorld();
+          polaroidGroup.updateMatrixWorld();
+          raycaster.setFromCamera(pointerNDC, camera);
+          const hits = raycaster.intersectObjects(polaroidMeshes, true);
+          const targetPolaroid = resolveHitPolaroid(hits);
+          if (targetPolaroid && targetPolaroid.userData) {
+            openPolaroidLightbox(targetPolaroid.userData.mediaIdx);
+          }
+        }
+
+        threeContainer.addEventListener("mousedown", (e) => {
+          dragging = true;
+          downX = lastX = e.clientX;
+          downY = lastY = e.clientY;
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (currentScreen !== 8) return;
+          const rect = renderer.domElement.getBoundingClientRect();
+          pointerNDC.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          pointerNDC.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+          if (dragging) {
+            const dx = e.clientX - lastX;
+            const dy = e.clientY - lastY;
+            lastX = e.clientX;
+            lastY = e.clientY;
+            targetYaw += dx * 0.0045;
+            targetPitch = Math.max(-0.65, Math.min(0.65, targetPitch + dy * 0.0045));
+          }
+        });
+
+        window.addEventListener("mouseup", (e) => {
+          if (dragging && currentScreen === 8) {
+            const travel = Math.hypot(e.clientX - downX, e.clientY - downY);
+            if (travel < CLICK_DISTANCE_THRESHOLD) {
+              tryOpenPolaroidAtClientPoint(e.clientX, e.clientY);
+            }
+          }
+          dragging = false;
+        });
+
+        threeContainer.addEventListener("touchstart", (e) => {
+          if (e.touches.length === 1) {
+            dragging = true;
+            downX = lastX = e.touches[0].clientX;
+            downY = lastY = e.touches[0].clientY;
+          } else if (e.touches.length === 2) {
+            dragging = false;
+            pinchStartDist = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+            pinchStartZ = targetCameraZ;
+          }
+        }, { passive: true });
+
+        threeContainer.addEventListener("touchmove", (e) => {
+          if (e.touches.length === 1 && dragging) {
+            const dx = e.touches[0].clientX - lastX;
+            const dy = e.touches[0].clientY - lastY;
+            lastX = e.touches[0].clientX;
+            lastY = e.touches[0].clientY;
+            targetYaw += dx * 0.0055;
+            targetPitch = Math.max(-0.65, Math.min(0.65, targetPitch + dy * 0.0055));
+          } else if (e.touches.length === 2 && pinchStartDist) {
+            const dist = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+            const delta = (pinchStartDist - dist) * 0.06;
+            targetCameraZ = Math.max(MIN_CAMERA_Z, Math.min(MAX_CAMERA_Z, pinchStartZ + delta));
+          }
+        }, { passive: true });
+
+        threeContainer.addEventListener("touchend", (e) => {
+          if (dragging && e.changedTouches.length === 1 && currentScreen === 8) {
+            const t = e.changedTouches[0];
+            const travel = Math.hypot(t.clientX - downX, t.clientY - downY);
+            if (travel < CLICK_DISTANCE_THRESHOLD) {
+              tryOpenPolaroidAtClientPoint(t.clientX, t.clientY);
+            }
+          }
+          dragging = false;
+          pinchStartDist = null;
+        });
+
+        threeContainer.addEventListener("wheel", (e) => {
+          if (currentScreen !== 8) return;
+          e.preventDefault();
+          targetCameraZ = Math.max(MIN_CAMERA_Z, Math.min(MAX_CAMERA_Z, targetCameraZ + e.deltaY * 0.015));
+        }, { passive: false });
+      }
+
+      /* -------------------------------------------------------
+         13. POLAROID LIGHTBOX MODAL (Cyan Download + Outlined Heart)
+      -------------------------------------------------------- */
+      const polaroidLightbox = document.getElementById("polaroidLightbox");
+      const lightboxMediaContainer = document.getElementById("lightboxMediaContainer");
+      const lightboxCaptionTitle = document.getElementById("lightboxCaptionTitle");
+      const lightboxHeartBtn = document.getElementById("lightboxHeartBtn");
+      const lightboxDownloadBtn = document.getElementById("lightboxDownloadBtn");
+
+      function openPolaroidLightbox(mediaIdx) {
+        activeLightboxIndex = mediaIdx;
+        const item = mediaItems[mediaIdx];
+        if (!item) return;
+
+        playNote("G5", "8n");
+        lightboxCaptionTitle.textContent = item.caption;
+
+        if (item.type === "video") {
+          const fallbackPoster = item.poster || "Malkin g.jpeg";
+          lightboxMediaContainer.innerHTML = `
+            <video id="lightboxActiveVideo" src="${item.url}" poster="${fallbackPoster}" autoplay loop playsinline controls class="w-full h-full object-cover"></video>
+          `;
+        } else {
+          lightboxMediaContainer.innerHTML = `
+            <img src="${item.url}" alt="${item.caption}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x760/1c1e24/94a3b8?text=${encodeURIComponent(item.caption)}';">
+          `;
+        }
+
+        updateLightboxHeartUI();
+        polaroidLightbox.classList.add("open");
+      }
+
+      function closePolaroidLightbox() {
+        const vid = document.getElementById("lightboxActiveVideo");
+        if (vid) vid.pause();
+        polaroidLightbox.classList.remove("open");
+        activeLightboxIndex = -1;
+      }
+
+      function updateLightboxHeartUI() {
+        const item = mediaItems[activeLightboxIndex];
+        if (!item) return;
+        if (item.liked) {
+          lightboxHeartBtn.classList.add("liked");
+          lightboxHeartBtn.textContent = "♥";
+        } else {
+          lightboxHeartBtn.classList.remove("liked");
+          lightboxHeartBtn.textContent = "♡";
+        }
+      }
+
+      lightboxHeartBtn.addEventListener("click", () => {
+        const item = mediaItems[activeLightboxIndex];
+        if (!item) return;
+        item.liked = !item.liked;
+        playNote(item.liked ? "C6" : "A4", "16n");
+        updateLightboxHeartUI();
+      });
+
+      lightboxDownloadBtn.addEventListener("click", async () => {
+        const item = mediaItems[activeLightboxIndex];
+        if (!item) return;
+        playNote("E5", "8n");
+
+        const ext = item.type === "video" ? "mp4" : "jpg";
+        const safeName = (item.filename || ((item.caption || "Rasmalai_Memory").replace(/[^a-z0-9_\-]/gi, "_") + "." + ext));
+
+        try {
+          const response = await fetch(item.url);
+          const blob = await response.blob();
+          const blobUrl = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = blobUrl;
+          a.download = safeName;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 1500);
+        } catch (err) {
+          const a = document.createElement("a");
+          a.href = item.url;
+          a.download = safeName;
+          a.target = "_blank";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+      });
+
+      polaroidLightbox.addEventListener("click", (e) => {
+        if (e.target === polaroidLightbox) {
+          closePolaroidLightbox();
+        }
+      });
+
+      /* -------------------------------------------------------
+         15. INITIALIZE ON LOAD
+      -------------------------------------------------------- */
+      window.addEventListener("load", () => {
+        initFloatingParticles();
+        render3DCoverflow();
+        const s1 = document.getElementById("screen-1");
+        if (s1) s1.focus({ preventScroll: true });
+      });
+    })();
+  </script>
+</body>
+</html>
